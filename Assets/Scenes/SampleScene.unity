@@ -672,7 +672,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shootPoint: {fileID: 1451979466}
-  _bullet: {fileID: 1587411743913181042, guid: 788aad14701c37444a82f4dce71f564d, type: 3}
+  _bullet: {fileID: 5117923595111299335, guid: 788aad14701c37444a82f4dce71f564d, type: 3}
   _bulletsPerSecond: 5
   _container: {fileID: 642297795}
   _capacity: 100
@@ -752,7 +752,7 @@ GameObject:
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1797105818
 Transform:
   m_ObjectHideFlags: 0
