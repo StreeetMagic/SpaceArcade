@@ -14,7 +14,7 @@ namespace Player
         private void Awake()
         {
             _container = this.transform.parent.gameObject;
-        }   
+        }
 
         private void Update()
         {
@@ -32,9 +32,19 @@ namespace Player
             {
                 enemy.TakeDamage(_damage);
                 gameObject.SetActive(false);
-               // transform.SetParent(_container.transform);
             }
         }
+
+        private void OnDisable()
+        {
+            Invoke("ReAttach", .01f);
+        }
+
+        void ReAttach()
+        {
+            transform.SetParent(_container.transform);
+        }
+
     }
 }
 

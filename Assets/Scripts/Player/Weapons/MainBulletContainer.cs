@@ -4,8 +4,5 @@ using UnityEngine;
 
 public class MainBulletContainer : MonoBehaviour
 {
-    public MainBulletContainer GetRef()
-    {
-        return this;
-    }
+
 }

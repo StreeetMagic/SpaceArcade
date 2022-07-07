@@ -19,7 +19,7 @@ namespace Player
 
         private void OnDisable()
         {
-            _playerUinputActions.Player.Enable();
+            _playerUinputActions.Player.Disable();
         }
 
         private void Awake()
