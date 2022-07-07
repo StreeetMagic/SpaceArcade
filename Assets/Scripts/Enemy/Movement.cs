@@ -6,8 +6,8 @@ namespace Enemy
 {
     public class Movement : MonoBehaviour
     {
-        private float _xMoveSpeed = 6;
-        private float _yMoveSpeed = 5;
+        private float _xMoveSpeed = 3;
+        private float _yMoveSpeed = 2;
         private bool _goesTop = true;
         private bool _goesLeft = true;
         private int _YBorder = 4;

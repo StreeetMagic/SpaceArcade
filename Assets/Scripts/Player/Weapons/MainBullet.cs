@@ -9,21 +9,16 @@ namespace Player
     {
         private GameObject _container;
         private int _damage = 1;
-        public float Speed { get; protected set; } = 10;
+        public float Speed { get; private set; } = 15;
 
         private void Awake()
         {
-            _container = this.transform.parent.gameObject;
+            _container = transform.parent.gameObject;
         }
 
         private void Update()
         {
             transform.Translate(Vector3.up * Speed * Time.deltaTime);
-        }
-
-        public void SetParent()
-        {
-            transform.SetParent(_container.transform);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -35,12 +30,17 @@ namespace Player
             }
         }
 
-        private void OnDisable()
+        private void OnEnable()
         {
-            Invoke("ReAttach", .01f);
+            transform.SetParent(null);
         }
 
-        void ReAttach()
+        private void OnDisable()
+        {
+            Invoke(nameof(ReAttachParent), .001f);
+        }
+
+        void ReAttachParent()
         {
             transform.SetParent(_container.transform);
         }

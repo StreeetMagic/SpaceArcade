@@ -11,11 +11,11 @@ namespace Player
         [SerializeField] private float _bulletsPerSecond = 1;
         [SerializeField] private GameObject _container;
         [SerializeField] private int _capacity;
+        [SerializeField] private List<MainBullet> _pool = new List<MainBullet>();
 
         public GameObject Container { get { return _container; } }
 
         private bool _isShooting = true;
-        private List<MainBullet> _pool = new List<MainBullet>();
 
         private void Start()
         {
@@ -37,8 +37,8 @@ namespace Player
         private void Shoot(MainBullet bullet)
         {
             bullet.gameObject.SetActive(true);
-            bullet.transform.SetParent(null);
             bullet.transform.position = _shootPoint.position;
+            bullet.transform.SetParent(null);
         }
 
         private IEnumerator Shooting(float cooldown)
