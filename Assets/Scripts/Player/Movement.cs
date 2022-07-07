@@ -25,7 +25,6 @@ namespace Player
         private void Update()
         {
             _direction = _playerUinputActions.Player.Move.ReadValue<Vector2>();
-
             Move(_direction);
         }
 
@@ -48,12 +47,7 @@ namespace Player
         {
             float scaledMoveSpeed = _moveSpeed * Time.deltaTime;
             Vector3 move = direction;
-
             transform.position += move * scaledMoveSpeed;
-
         }
-
-
     }
-
 }

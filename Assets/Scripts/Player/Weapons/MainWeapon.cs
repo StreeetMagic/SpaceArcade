@@ -6,7 +6,7 @@ namespace Player
 {
     public class MainWeapon : MonoBehaviour
     {
-        [SerializeField] private Transform _shootPoint;
+        [SerializeField] private Transform[] _shootPoints;
         [SerializeField] private MainBullet _bullet;
         [SerializeField] private float _bulletsPerSecond = 1;
         [SerializeField] private GameObject _container;
@@ -34,26 +34,44 @@ namespace Player
             }
         }
 
-        private void Shoot(MainBullet bullet)
+        private void Shoot(MainBullet bullet, Transform shootingPoint)
         {
+
+
             bullet.gameObject.SetActive(true);
-            bullet.transform.position = _shootPoint.position;
+            bullet.transform.position = shootingPoint.position;
             bullet.transform.SetParent(null);
+
+
         }
 
         private IEnumerator Shooting(float cooldown)
         {
             while (_isShooting)
             {
-                if (TryGetObject(out MainBullet bullet))
+                bool isShooted;
+
+                for (int i = 0; i < _shootPoints.Length; i++)
                 {
-                    Shoot(bullet);
-                    yield return new WaitForSeconds(cooldown);
+                    isShooted = false;
+
+                    while (isShooted == false)
+                    {
+                        if (TryGetObject(out MainBullet bullet))
+                        {
+                            Shoot(bullet, _shootPoints[i]);
+                            isShooted = true;
+                        }
+                        else
+                        {
+                            yield return null;
+                        }
+                    }
+
                 }
-                else
-                {
-                    yield return null;
-                }
+
+                yield return new WaitForSeconds(cooldown);
+
             }
         }
 
