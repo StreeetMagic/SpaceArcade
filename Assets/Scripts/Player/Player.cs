@@ -7,7 +7,6 @@ namespace Player
     public class Player : MonoBehaviour
     {
         private int _health;
-        //private int _maxHealth = 10;
 
         public void TakeDamage(int damage)
         {

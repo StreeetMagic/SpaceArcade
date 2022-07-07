@@ -8,5 +8,4 @@ public class Border : MonoBehaviour
     {
         collision.gameObject.SetActive(false);
     }
-
 }
