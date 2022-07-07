@@ -36,13 +36,9 @@ namespace Player
 
         private void Shoot(MainBullet bullet, Transform shootingPoint)
         {
-
-
             bullet.gameObject.SetActive(true);
             bullet.transform.position = shootingPoint.position;
             bullet.transform.SetParent(null);
-
-
         }
 
         private IEnumerator Shooting(float cooldown)
@@ -67,11 +63,8 @@ namespace Player
                             yield return null;
                         }
                     }
-
                 }
-
                 yield return new WaitForSeconds(cooldown);
-
             }
         }
 
