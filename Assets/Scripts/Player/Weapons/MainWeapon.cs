@@ -43,6 +43,9 @@ namespace Player
 
         private IEnumerator Shooting(float cooldown)
         {
+            WaitForSeconds waitForSeconds = new WaitForSeconds(cooldown);
+            yield return waitForSeconds;
+
             while (_isShooting)
             {
                 bool isShooted;
@@ -60,11 +63,11 @@ namespace Player
                         }
                         else
                         {
-                            yield return null;
+                            //yield return null;
                         }
                     }
                 }
-                yield return new WaitForSeconds(cooldown);
+                yield return waitForSeconds;
             }
         }
 
