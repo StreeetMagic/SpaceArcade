@@ -32,7 +32,10 @@ namespace Player
 
         private void OnEnable()
         {
-            transform.SetParent(null);
+            while (transform.parent != null)
+            {
+                transform.SetParent(null);
+            }
         }
 
         private void OnDisable()

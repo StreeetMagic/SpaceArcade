@@ -34,7 +34,7 @@ namespace Player
             }
         }
 
-        private void Shoot(MainBullet bullet, Transform shootingPoint)
+        private void FireBullet(MainBullet bullet, Transform shootingPoint)
         {
             bullet.gameObject.SetActive(true);
             bullet.transform.position = shootingPoint.position;
@@ -43,37 +43,45 @@ namespace Player
 
         private IEnumerator Shooting(float cooldown)
         {
+            bool isShooted;
+
             WaitForSeconds waitForSeconds = new WaitForSeconds(cooldown);
             yield return waitForSeconds;
-
+            
             while (_isShooting)
             {
-                bool isShooted;
+                Debug.Log(_container.transform.childCount);
 
-                for (int i = 0; i < _shootPoints.Length; i++)
+                if (_container.transform.childCount <= _shootPoints.Length)
                 {
-                    isShooted = false;
-
-                    while (isShooted == false)
+                    yield return waitForSeconds;
+                }
+                else
+                {
+                    for (int i = 0; i < _shootPoints.Length; i++)
                     {
-                        if (TryGetObject(out MainBullet bullet))
+                        isShooted = false;
+
+                        if (_shootPoints[i].gameObject.activeSelf)
                         {
-                            Shoot(bullet, _shootPoints[i]);
-                            isShooted = true;
-                        }
-                        else
-                        {
-                            //yield return null;
+                            while (isShooted == false)
+                            {
+                                if (TryGetObject(out MainBullet bullet))
+                                {
+                                    FireBullet(bullet, _shootPoints[i]);
+                                    isShooted = true;
+                                }
+                            }
                         }
                     }
+                    yield return waitForSeconds;
                 }
-                yield return waitForSeconds;
             }
         }
 
         protected bool TryGetObject(out MainBullet result)
         {
-            result = _pool[Random.Range(0, _pool.Count - 1)];
+            result = _pool[Random.Range(0, _pool.Count)];
             return result.gameObject.activeSelf == false ? result != null : result == null;
         }
     }
