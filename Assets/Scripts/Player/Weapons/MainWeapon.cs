@@ -50,8 +50,6 @@ namespace Player
             
             while (_isShooting)
             {
-                Debug.Log(_container.transform.childCount);
-
                 if (_container.transform.childCount <= _shootPoints.Length)
                 {
                     yield return waitForSeconds;

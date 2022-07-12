@@ -7,13 +7,13 @@ namespace Player
 {
     public class MainBullet : MonoBehaviour
     {
-        private GameObject _container;
+        private GameObject _parent;
         private int _damage = 1;
         public float Speed { get; private set; } = 15;
 
         private void Awake()
         {
-            _container = transform.parent.gameObject;
+            _parent = transform.parent.gameObject;
         }
 
         private void Update()
@@ -43,9 +43,9 @@ namespace Player
             Invoke(nameof(ReAttachParent), .001f);
         }
 
-        void ReAttachParent()
+        private void ReAttachParent()
         {
-            transform.SetParent(_container.transform);
+            transform.SetParent(_parent.transform);
         }
 
     }
