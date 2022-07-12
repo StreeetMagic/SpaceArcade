@@ -6,7 +6,12 @@ namespace Enemy
 {
     public class Сrow : Enemy
     {
+        private void Update()
+        {
+            Movement.StrafeX();
+            Movement.StrafeY();
 
+        }
     }
 }
 

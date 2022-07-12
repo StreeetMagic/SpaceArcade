@@ -8,9 +8,9 @@ namespace Enemy
     public class Spawner : MonoBehaviour
     {
         [SerializeField] private Transform[] _spawnPoints;
-        [SerializeField] private float _cooldown = 1f;
         [SerializeField] private Enemy[] _enemies;
         [SerializeField] private GameObject _container;
+        [SerializeField] private float _cooldown = 1f;
         [SerializeField] private int _capacity;
 
         private float _elapsedTime;
