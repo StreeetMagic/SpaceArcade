@@ -7,17 +7,15 @@ namespace Player
     public class MainWeapon : MonoBehaviour
     {
         [SerializeField] private Transform[] _shootPoints;
-        [SerializeField] private MainBullet _bullet;
+        [SerializeField] private Bullet _bullet;
         [SerializeField] private float _bulletsPerSecond = 1;
         [SerializeField] private GameObject _container;
         [SerializeField] private int _capacity;
-        [SerializeField] private List<MainBullet> _pool = new List<MainBullet>();
-
-        public GameObject Container { get { return _container; } }
+        [SerializeField] private List<Bullet> _pool = new List<Bullet>();
 
         private bool _isShooting = true;
 
-        private void Start()
+        private void OnEnable()
         {
             Initialize();
             float cooldown = 1 / _bulletsPerSecond;
@@ -28,16 +26,17 @@ namespace Player
         {
             for (int i = 0; i < _capacity; i++)
             {
-                MainBullet spawned = Instantiate(_bullet, _container.transform);
+                Bullet spawned = Instantiate(_bullet, _container.transform);
                 spawned.gameObject.SetActive(false);
                 _pool.Add(spawned);
             }
         }
 
-        private void FireBullet(MainBullet bullet, Transform shootingPoint)
+        private void FireBullet(Bullet bullet, Transform shootingPoint)
         {
             bullet.gameObject.SetActive(true);
             bullet.transform.position = shootingPoint.position;
+            bullet.transform.rotation = shootingPoint.rotation;
             bullet.transform.SetParent(null);
         }
 
@@ -64,7 +63,7 @@ namespace Player
                         {
                             while (isShooted == false)
                             {
-                                if (TryGetObject(out MainBullet bullet))
+                                if (TryGetObject(out Bullet bullet))
                                 {
                                     FireBullet(bullet, _shootPoints[i]);
                                     isShooted = true;
@@ -77,7 +76,7 @@ namespace Player
             }
         }
 
-        protected bool TryGetObject(out MainBullet result)
+        protected bool TryGetObject(out Bullet result)
         {
             result = _pool[Random.Range(0, _pool.Count)];
             return result.gameObject.activeSelf == false ? result != null : result == null;

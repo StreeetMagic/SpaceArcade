@@ -79,7 +79,7 @@ namespace Enemy
 
         public void Rotate()
         {
-            transform.Rotate(0, 0, 1);
+            transform.Rotate(0, 0, .5f);
         }
     }
 }

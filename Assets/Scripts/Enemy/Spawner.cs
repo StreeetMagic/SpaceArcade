@@ -20,7 +20,6 @@ namespace Enemy
         {
             Initialize();
         }
-
         protected void Initialize()
         {
             for (int i = 0; i < _capacity; i++)
