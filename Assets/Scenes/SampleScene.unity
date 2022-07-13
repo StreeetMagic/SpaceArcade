@@ -1017,7 +1017,7 @@ MonoBehaviour:
   - {fileID: 1494267901}
   - {fileID: 2088717034}
   - {fileID: 19225905}
-  _bullet: {fileID: 5117923595111299335, guid: 788aad14701c37444a82f4dce71f564d, type: 3}
+  _bullet: {fileID: -6986527582584916225, guid: 788aad14701c37444a82f4dce71f564d, type: 3}
   _bulletsPerSecond: 5
   _container: {fileID: 642297795}
   _capacity: 200
@@ -1142,7 +1142,6 @@ MonoBehaviour:
   - {fileID: 969778006}
   - {fileID: 1742193628}
   - {fileID: 586585602}
-  _cooldown: 0.5
   _enemies:
   - {fileID: -463979578444678899, guid: b89ba74d36ee5d94ea4fc75aa9327502, type: 3}
   - {fileID: 827429716750971255, guid: daf99fc4f70c3434aa95a4e1f5d87a8f, type: 3}
@@ -1150,6 +1149,7 @@ MonoBehaviour:
   - {fileID: -3864096435045923670, guid: 151bceee8bd80cd42900a8fa7ae1d8fd, type: 3}
   - {fileID: -5446794274531036280, guid: 632fc7e98ad38c94dac50aba2af651e4, type: 3}
   _container: {fileID: 1856118560}
+  _cooldown: 0.5
   _capacity: 30
 --- !u!1 &1856118560
 GameObject:
