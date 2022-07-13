@@ -6,7 +6,7 @@ using Player;
 
 
 namespace Enemy
-{
+{   
     [RequireComponent(typeof(Movement))]
 
     public abstract class Enemy : MonoBehaviour
@@ -17,9 +17,18 @@ namespace Enemy
         private int _maxHealth = 5;
         
         public Movement Movement { get; private set; }
+        public int XPosition { get; protected set; }
+       
+        private void Awake()
+        {
+            Movement = GetComponent<Movement>();
+            _parent = transform.parent;
+        }
 
         private void OnEnable()
         {
+            XPosition = GetRandomXposition();
+
             while (transform.parent != null)
             {
                 transform.SetParent(null);
@@ -30,18 +39,7 @@ namespace Enemy
         {
             Invoke(nameof(ReAttachParent), .001f);
         }
-
-        private void ReAttachParent()
-        {
-            transform.SetParent(_parent.transform);
-        }
-
-        private void Awake()
-        {
-            Movement = GetComponent<Movement>();
-            _parent = transform.parent;
-        }
-
+        
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.TryGetComponent(out Player.Player player))
@@ -50,6 +48,19 @@ namespace Enemy
                 Die();
             }
         }
+
+        private int GetRandomXposition()
+        {
+            int minX = 2;
+            int maxX = 7;
+            return Random.Range(minX, maxX);
+        }
+
+        private void ReAttachParent()
+        {
+            transform.SetParent(_parent.transform);
+        }
+
 
         private void Die()
         {
