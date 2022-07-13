@@ -15,37 +15,46 @@ namespace Enemy
 
         public void MoveLeft()
         {
-            transform.Translate(Vector3.up * _xMoveSpeed * Time.deltaTime);
-        }        
-        
+            transform.position -= new Vector3(_xMoveSpeed * Time.deltaTime, 0, 0);
+        }
+
         public void MoveRight()
         {
-            transform.Translate(Vector3.down * _xMoveSpeed * Time.deltaTime);
+            transform.position += new Vector3(_xMoveSpeed * Time.deltaTime, 0, 0);
+        }
+
+        public void MoveDown()
+        {
+            transform.position -= new Vector3(0, _yMoveSpeed * Time.deltaTime, 0);
+        }
+
+        public void MoveTop()
+        {
+            transform.position += new Vector3(0, _yMoveSpeed * Time.deltaTime, 0);
         }
 
         public void StrafeY()
         {
             if (_goesTop)
             {
-                transform.Translate(Vector3.right * _yMoveSpeed * Time.deltaTime);
+                MoveTop();
 
                 if (transform.position.y >= _YBorder)
                 {
                     _goesTop = false;
                 }
             }
-
-            if (_goesTop == false)
+            else
             {
-                transform.Translate(Vector3.left * _yMoveSpeed * Time.deltaTime);
+                MoveDown();
 
                 if (transform.position.y <= -_YBorder)
                 {
                     _goesTop = true;
                 }
             }
-        }        
-        
+        }
+
         public void StrafeX()
         {
             if (_goesLeft)
@@ -57,8 +66,7 @@ namespace Enemy
                     _goesLeft = false;
                 }
             }
-
-            if (_goesLeft == false)
+            else
             {
                 MoveRight();
 
@@ -67,6 +75,11 @@ namespace Enemy
                     _goesLeft = true;
                 }
             }
+        }
+
+        public void Rotate()
+        {
+            transform.Rotate(0, 0, .5f);
         }
     }
 }
