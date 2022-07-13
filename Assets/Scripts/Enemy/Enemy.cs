@@ -12,9 +12,9 @@ namespace Enemy
     public abstract class Enemy : MonoBehaviour
     {
         private Transform _parent;
-        private int _collisionDamage = 1;
-        private int _health = 5;
-        private int _maxHealth = 5;
+        private float _collisionDamage = 1f;
+        private float _health = 5f;
+        private float _maxHealth = 5f;
         
         public Movement Movement { get; private set; }
         public int XPosition { get; protected set; }
@@ -44,7 +44,7 @@ namespace Enemy
         {
             if (collision.TryGetComponent(out Player.Player player))
             {
-                player.TakeDamage(_collisionDamage);
+                player.TakeDamage((int)_collisionDamage);
                 Die();
             }
         }
@@ -61,14 +61,13 @@ namespace Enemy
             transform.SetParent(_parent.transform);
         }
 
-
         private void Die()
         {
             gameObject.SetActive(false);
-            SetHealth();
+            _health = _maxHealth;
         }
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(float damage)
         {
             _health -= damage;
 
@@ -76,11 +75,6 @@ namespace Enemy
             {
                 Die();
             }
-        }
-
-        public void SetHealth()
-        {
-            _health = _maxHealth;
         }
     }
 }

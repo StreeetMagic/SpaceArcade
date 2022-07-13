@@ -575,7 +575,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6075787461715023299, guid: 389c14909a3e0244284c25967dc9af0c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.21
+      value: -5.5
       objectReference: {fileID: 0}
     - target: {fileID: 6075787461715023299, guid: 389c14909a3e0244284c25967dc9af0c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -793,7 +793,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1451979465
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -978,7 +978,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1552515440
 Transform:
   m_ObjectHideFlags: 0
@@ -1112,7 +1112,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1797105817}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.84, y: -0.04, z: -0.070871845}
+  m_LocalPosition: {x: 9.68, y: -0.04, z: -0.070871845}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 880204789}
@@ -1150,7 +1150,7 @@ MonoBehaviour:
   - {fileID: -5446794274531036280, guid: 632fc7e98ad38c94dac50aba2af651e4, type: 3}
   _container: {fileID: 1856118560}
   _cooldown: 0.5
-  _capacity: 30
+  _capacity: 10
 --- !u!1 &1856118560
 GameObject:
   m_ObjectHideFlags: 0

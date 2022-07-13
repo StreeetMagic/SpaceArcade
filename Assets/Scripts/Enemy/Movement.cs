@@ -81,6 +81,20 @@ namespace Enemy
         {
             transform.Rotate(0, 0, .5f);
         }
+
+        private IEnumerator Upgrade()
+        {
+            WaitForSeconds cooldown = new WaitForSeconds(5);
+            yield return cooldown;
+
+            while (true)
+            {
+                _xMoveSpeed *= 2;
+                _yMoveSpeed *= 2;
+                
+                yield return cooldown;
+            }
+        }
     }
 }
 

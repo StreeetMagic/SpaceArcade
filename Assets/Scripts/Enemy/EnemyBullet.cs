@@ -23,6 +23,12 @@ namespace Enemy
                 player.TakeDamage(Damage);
                 gameObject.SetActive(false);
             }
+
+            if (collision.TryGetComponent(out Bullet bullet))
+            {
+                gameObject.SetActive(false);
+                bullet.gameObject.SetActive(false);
+            }
         }
 
 

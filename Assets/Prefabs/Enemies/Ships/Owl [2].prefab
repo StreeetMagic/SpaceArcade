@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 1742092357}
   - component: {fileID: 1742092358}
   m_Layer: 0
-  m_Name: MainWeapon (1)
+  m_Name: MainWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,7 +142,7 @@ MonoBehaviour:
   _bullet: {fileID: 3088936968990765573, guid: 37d278030c614b045aef3dbd6fe35248, type: 3}
   _bulletsPerSecond: 1
   _container: {fileID: 1740416600}
-  _capacity: 10
+  _capacity: 50
   _pool: []
 --- !u!1 &5065191953388980594
 GameObject:
