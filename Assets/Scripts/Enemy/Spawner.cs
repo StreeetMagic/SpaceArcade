@@ -54,7 +54,10 @@ namespace Enemy
             int randomEnemyPool = Random.Range(0, _enemiesAvaliable);
             int randomEnemy = Random.Range(0, _capacity);
             result = _pools[randomEnemyPool][randomEnemy];
-            return result.gameObject.activeSelf == false ? result != null : result == null;
+
+            //return result.gameObject.activeSelf == false ? result != null : result == null;
+            return result.gameObject.activeSelf == false;
+
         }
 
         private void Update()
