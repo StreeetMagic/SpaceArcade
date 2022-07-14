@@ -15,9 +15,11 @@ namespace Enemy
 
         private float _elapsedTime;
         private int _enemiesAvaliable = 1;
-        private int _newEnemyCooldown = 30;
+        private int _newEnemyCooldown = 6;
+        private List<List<Enemy>> _pools = new List<List<Enemy>>();
+        private float _statTimer = 30f;
 
-        public List<List<Enemy>> _pools = new List<List<Enemy>>();
+        public float StatMultiplayer { get; private set; } = 1f;
 
         private void FillPools()
         {
@@ -32,6 +34,7 @@ namespace Enemy
             FillPools();
             Initialize();
             StartCoroutine(NewEnemiesTimer());
+            StartCoroutine(NewStatsTimer());
         }
         protected void Initialize()
         {
@@ -84,6 +87,19 @@ namespace Enemy
             while (_enemiesAvaliable < enemyCount)
             {
                 _enemiesAvaliable++;
+                yield return cooldown;
+            }
+        }
+
+        private IEnumerator NewStatsTimer()
+        {
+
+            WaitForSeconds cooldown = new WaitForSeconds(_statTimer);
+            yield return cooldown;
+
+            while (true)
+            {
+                StatMultiplayer++;
                 yield return cooldown;
             }
         }

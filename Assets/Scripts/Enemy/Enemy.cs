@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Player;
 
-
-
 namespace Enemy
 {   
     [RequireComponent(typeof(Movement))]
@@ -12,6 +10,7 @@ namespace Enemy
     public abstract class Enemy : MonoBehaviour
     {
         private Transform _parent;
+        private Spawner _spawner;
         private float _collisionDamage = 1f;
         private float _health = 5f;
         private float _maxHealth = 5f;
@@ -23,10 +22,12 @@ namespace Enemy
         {
             Movement = GetComponent<Movement>();
             _parent = transform.parent;
+            _spawner = _parent.transform.parent.GetComponent<Spawner>();
         }
 
         private void OnEnable()
         {
+            
             XPosition = GetRandomXposition();
 
             while (transform.parent != null)
@@ -44,7 +45,7 @@ namespace Enemy
         {
             if (collision.TryGetComponent(out Player.Player player))
             {
-                player.TakeDamage((int)_collisionDamage);
+                player.TakeDamage(_collisionDamage);
                 Die();
             }
         }

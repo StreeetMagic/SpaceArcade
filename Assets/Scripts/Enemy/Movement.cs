@@ -13,6 +13,11 @@ namespace Enemy
         private int _YBorder = 4;
         private int _XBorder = 7;
 
+        private void OnEnable()
+        {
+            _xMoveSpeed *= LevelDiffucultySingleton.Instance.Multiplier;
+            _yMoveSpeed *= LevelDiffucultySingleton.Instance.Multiplier;
+        }
         public void MoveLeft()
         {
             transform.position -= new Vector3(_xMoveSpeed * Time.deltaTime, 0, 0);
@@ -80,20 +85,6 @@ namespace Enemy
         public void Rotate()
         {
             transform.Rotate(0, 0, .5f);
-        }
-
-        private IEnumerator Upgrade()
-        {
-            WaitForSeconds cooldown = new WaitForSeconds(5);
-            yield return cooldown;
-
-            while (true)
-            {
-                _xMoveSpeed *= 2;
-                _yMoveSpeed *= 2;
-                
-                yield return cooldown;
-            }
         }
     }
 }

@@ -14,6 +14,7 @@ namespace Enemy
         private void OnEnable()
         {
             Speed = 5;
+            Speed *= LevelDiffucultySingleton.Instance.Multiplier;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
