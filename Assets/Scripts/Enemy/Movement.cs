@@ -6,18 +6,25 @@ namespace Enemy
 {
     public class Movement : MonoBehaviour
     {
-        private float _xMoveSpeed = 3;
-        private float _yMoveSpeed = 2;
+        [SerializeField] private float _DefaultXMoveSpeed = 3;
+        [SerializeField] private float _DefaultYMoveSpeed = 2;
+
+        private float _xMoveSpeed;
+        private float _yMoveSpeed;
+
         private bool _goesTop = true;
         private bool _goesLeft = true;
         private int _YBorder = 4;
         private int _XBorder = 7;
 
+        public float XMoveSpeed => _xMoveSpeed;
+
         private void OnEnable()
         {
-            _xMoveSpeed *= LevelDiffucultySingleton.Instance.Multiplier;
-            _yMoveSpeed *= LevelDiffucultySingleton.Instance.Multiplier;
+             _xMoveSpeed = _DefaultXMoveSpeed * DiffucultySingleton.Instance.MoveSpeedMultiplier;
+             _yMoveSpeed = _DefaultYMoveSpeed * DiffucultySingleton.Instance.MoveSpeedMultiplier;
         }
+
         public void MoveLeft()
         {
             transform.position -= new Vector3(_xMoveSpeed * Time.deltaTime, 0, 0);

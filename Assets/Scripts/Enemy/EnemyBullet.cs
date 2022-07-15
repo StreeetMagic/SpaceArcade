@@ -6,15 +6,18 @@ namespace Enemy
 {
     public class EnemyBullet : Bullet
     {
+        private Transform _parent;
+
         private void Update()
         {
             transform.Translate(Vector3.up * Speed * Time.deltaTime);
         }
 
-        private void OnEnable()
+        protected override void OnEnable()
         {
+            
+            
             Speed = 5;
-            Speed *= LevelDiffucultySingleton.Instance.Multiplier;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

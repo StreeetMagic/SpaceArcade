@@ -7,22 +7,18 @@ using Enemy;
 public abstract class Bullet : MonoBehaviour
 {
     private GameObject _parent;
+
     public float Speed { get; protected set; } = 15;
 
-    public int Damage { get; protected set; }
+    public int Damage { get; protected set; } = 1;
 
     private void Awake()
     {
         _parent = transform.parent.gameObject;
     }
 
-    private void OnEnable()
-    {
-        while (transform.parent != null)
-        {
-            transform.SetParent(null);
-        }
-    }
+    protected abstract void OnEnable();
+
 
     private void OnDisable()
     {

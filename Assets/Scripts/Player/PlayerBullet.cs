@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace Player
 {
-    public class MainBullet : Bullet
+    public class PlayerBullet : Bullet
     {
-        private void OnEnable()
+        protected override void OnEnable()
         {
-            Damage = 1;
+
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
