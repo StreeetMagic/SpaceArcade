@@ -12,6 +12,7 @@ namespace Enemy
         [SerializeField] private GameObject _container;
         [SerializeField] private float _cooldown = 1f;
         [SerializeField] private int _capacity;
+        [SerializeField] private Transform _aliveEnemies;
 
         private float _elapsedTime;
         private int _enemiesAvaliable = 1;
@@ -30,6 +31,7 @@ namespace Enemy
         {
             FillPools();
             Initialize();
+
             StartCoroutine(NewEnemiesTimer());
         }
         protected void Initialize()
@@ -44,14 +46,13 @@ namespace Enemy
                 }
             }
         }
-       
+
         private bool TryGetObject(out Enemy result)
         {
             int randomEnemyPool = Random.Range(0, _enemiesAvaliable);
             int randomEnemy = Random.Range(0, _capacity);
             result = _pools[randomEnemyPool][randomEnemy];
 
-            //return result.gameObject.activeSelf == false ? result != null : result == null;
             return result.gameObject.activeSelf == false;
 
         }
@@ -75,6 +76,7 @@ namespace Enemy
         {
             enemy.gameObject.SetActive(true);
             enemy.transform.position = spawnPoint;
+            enemy.SetAliveContainer(_aliveEnemies);
         }
 
         private IEnumerator NewEnemiesTimer()
@@ -90,7 +92,7 @@ namespace Enemy
             }
         }
 
-      
+
     }
 }
 
