@@ -11,13 +11,17 @@ public class MainWeapon : MonoBehaviour
     [SerializeField] private int _capacity;
     [SerializeField] private List<Bullet> _pool = new List<Bullet>();
 
+    private Coroutine _shooting;
+
     private bool _isShooting = true;
+
+    public float BulletsPerSecond => _bulletsPerSecond;
 
     private void OnEnable()
     {
         Initialize();
-        float cooldown = 1 / _bulletsPerSecond;
-        StartCoroutine(Shooting(cooldown));
+
+        _shooting = StartCoroutine(Shooting());
     }
 
     private void Initialize()
@@ -33,13 +37,13 @@ public class MainWeapon : MonoBehaviour
     private void FireBullet(Bullet bullet, Transform shootingPoint)
     {
         bullet.gameObject.SetActive(true);
-        bullet.transform.position = shootingPoint.position;
-        bullet.transform.rotation = shootingPoint.rotation;
+        bullet.transform.SetPositionAndRotation(shootingPoint.position, shootingPoint.rotation);
         bullet.transform.SetParent(null);
     }
 
-    private IEnumerator Shooting(float cooldown)
+    private IEnumerator Shooting()
     {
+        float cooldown = 1 / _bulletsPerSecond;
         bool isShooted;
 
         WaitForSeconds waitForSeconds = new WaitForSeconds(cooldown);
@@ -78,6 +82,22 @@ public class MainWeapon : MonoBehaviour
     {
         result = _pool[Random.Range(0, _pool.Count)];
         return result.gameObject.activeSelf == false ? result != null : result == null;
+    }
+
+    protected void SetBarrelStatus(int number, bool status)
+    {
+        _barrels[number].gameObject.SetActive(status);
+    }
+
+    protected void SetFireRate(float fireRate)
+    {
+        _bulletsPerSecond = fireRate;
+
+        if (_shooting != null)
+        {
+            StopCoroutine(_shooting);
+        }
+        _shooting = StartCoroutine(Shooting());
     }
 }
 

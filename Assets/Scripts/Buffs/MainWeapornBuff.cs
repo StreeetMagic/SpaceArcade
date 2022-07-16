@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MainWeapornBuff : Buff
 {
-    protected override void Upgrade()
+    protected override void Upgrade(Player.Player player)
     {
-        Debug.Log("Upgrade метод вкл");
+        player.UpgradeMainWeapon();
     }
 }

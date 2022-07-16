@@ -6,13 +6,12 @@ public abstract class Buff : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<Player.Player>(out Player.Player Player))
+        if (collision.TryGetComponent<Player.Player>(out Player.Player player))
         {
-            Debug.Log("Игрок взял баф");
-            Upgrade();
+            Upgrade(player);
             gameObject.SetActive(false);
         }
     }
 
-    protected abstract void Upgrade();
+    protected abstract void Upgrade(Player.Player player);
 }
