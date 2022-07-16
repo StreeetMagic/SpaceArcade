@@ -219,7 +219,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1268627700}
-  - component: {fileID: 1268627701}
+  - component: {fileID: 5551510816211582844}
   m_Layer: 0
   m_Name: MainWeapon (3)
   m_TagString: Untagged
@@ -242,7 +242,7 @@ Transform:
   m_Father: {fileID: 5065191953388980599}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1268627701
+--- !u!114 &5551510816211582844
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -251,10 +251,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1268627699}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a41e0fded733fd49a31903ec82e9727, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fdfd35cdc0a5ea4882023e0e11912ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shootPoints:
+  _barrels:
   - {fileID: 346888532}
   - {fileID: 281681687}
   - {fileID: 671701724}
@@ -487,6 +487,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56101a2fdc738d54b8ba4595363db6f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _DefaultXMoveSpeed: 3
+  _DefaultYMoveSpeed: 2
 --- !u!114 &-3864096435045923670
 MonoBehaviour:
   m_ObjectHideFlags: 0

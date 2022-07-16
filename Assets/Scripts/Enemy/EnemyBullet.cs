@@ -11,7 +11,7 @@ namespace Enemy
             transform.Translate(Vector3.up * Speed * Time.deltaTime);
         }
 
-        private void OnEnable()
+        protected override void OnEnable()
         {
             Speed = 5;
         }
@@ -22,6 +22,12 @@ namespace Enemy
             {
                 player.TakeDamage(Damage);
                 gameObject.SetActive(false);
+            }
+
+            if (collision.TryGetComponent(out Bullet bullet))
+            {
+                gameObject.SetActive(false);
+                bullet.gameObject.SetActive(false);
             }
         }
 

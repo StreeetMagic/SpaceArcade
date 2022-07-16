@@ -14,26 +14,46 @@ namespace Enemy
         [SerializeField] private int _capacity;
 
         private float _elapsedTime;
-        private List<Enemy> _pool = new List<Enemy>();
+        private int _enemiesAvaliable = 1;
+        private int _newEnemyCooldown = 0;
+        private List<List<Enemy>> _pools = new List<List<Enemy>>();
 
-        private void Start()
+        private void FillPools()
         {
-            Initialize();
-        }
-        protected void Initialize()
-        {
-            for (int i = 0; i < _capacity; i++)
+            for (int i = 0; i < _enemies.Length; i++)
             {
-                Enemy spawned = Instantiate(_enemies[Random.Range(0, _enemies.Length)], _container.transform);
-                spawned.gameObject.SetActive(false);
-                _pool.Add(spawned);
+                _pools.Add(new List<Enemy>());
             }
         }
 
-        protected bool TryGetObject(out Enemy result)
+        private void Start()
         {
-            result = _pool[Random.Range(0, _pool.Count - 1)];
-            return result.gameObject.activeSelf == false ? result != null : result == null;
+            FillPools();
+            Initialize();
+            StartCoroutine(NewEnemiesTimer());
+        }
+        protected void Initialize()
+        {
+            for (int i = 0; i < _enemies.Length; i++)
+            {
+                for (int j = 0; j < _capacity; j++)
+                {
+                    Enemy spawned = Instantiate(_enemies[i], _container.transform);
+                    spawned.gameObject.SetActive(false);
+                    _pools[i].Add(spawned);
+                }
+            }
+        }
+       
+        private bool TryGetObject(out Enemy result)
+        {
+            int randomEnemyPool = Random.Range(0, _enemiesAvaliable);
+            int randomEnemy = Random.Range(0, _capacity);
+            result = _pools[randomEnemyPool][randomEnemy];
+
+            //return result.gameObject.activeSelf == false ? result != null : result == null;
+            return result.gameObject.activeSelf == false;
+
         }
 
         private void Update()
@@ -56,6 +76,21 @@ namespace Enemy
             enemy.gameObject.SetActive(true);
             enemy.transform.position = spawnPoint;
         }
+
+        private IEnumerator NewEnemiesTimer()
+        {
+            int enemyCount = _enemies.Count();
+            WaitForSeconds cooldown = new WaitForSeconds(_newEnemyCooldown);
+            yield return cooldown;
+
+            while (_enemiesAvaliable < enemyCount)
+            {
+                _enemiesAvaliable++;
+                yield return cooldown;
+            }
+        }
+
+      
     }
 }
 
