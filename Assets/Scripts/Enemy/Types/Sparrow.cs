@@ -8,7 +8,6 @@ namespace Enemy
     {
         private void Update()
         {
-            Movement.Rotate();
             Movement.StrafeX();
             Movement.StrafeY();
         }

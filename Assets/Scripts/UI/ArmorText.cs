@@ -17,7 +17,6 @@ public class ArmorText : MonoBehaviour
     private void OnDisable()
     {
         _player.ArmorChanged -= OnArmorChanged;
-
     }
 
     private void OnArmorChanged(float value)

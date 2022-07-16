@@ -753,7 +753,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slider: {fileID: 7916450678298896944}
-  _enemy: {fileID: 8848879888095847035}
+  _enemy: {fileID: 2892396201988158289}
 --- !u!1 &8142288882601432948
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,8 +765,6 @@ GameObject:
   - component: {fileID: 149651560141839734}
   - component: {fileID: 1973865632995183098}
   - component: {fileID: 5643319658490384389}
-  - component: {fileID: 5887796418123447344}
-  - component: {fileID: 8848879888095847035}
   - component: {fileID: 754699903089899475}
   m_Layer: 0
   m_Name: Body
@@ -863,34 +861,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5887796418123447344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8142288882601432948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56101a2fdc738d54b8ba4595363db6f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _DefaultXMoveSpeed: 3
-  _DefaultYMoveSpeed: 2
---- !u!114 &8848879888095847035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8142288882601432948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec4e8349edf66cb41823022079dbd728, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _currentHealth: 0
-  _maxHealth: 150
 --- !u!58 &754699903089899475
 CircleCollider2D:
   m_ObjectHideFlags: 0
