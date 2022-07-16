@@ -8,9 +8,9 @@ public class PlayerMainWeapon : MainWeapon
     private int _startLevel = 1;
     private int _maxLevel = 5;
 
-    private float _startBulletsPerSecond = 1;
-    private float _maxBulletsPerSecond = 5;
-    private float _bulletsPerSecondIncrease = 2.25f;
+    private float _startBulletsPerSecond = 7;
+    private float _maxBulletsPerSecond = 9;
+    private float _bulletsPerSecondIncrease = 1f;
 
     private void Start()
     {
@@ -43,24 +43,19 @@ public class PlayerMainWeapon : MainWeapon
 
     public void Upgrade()
     {
-        if (_level < _maxLevel)
+        if (BulletsPerSecond < _maxBulletsPerSecond)
+        {
+            SetFireRate(BulletsPerSecond + _bulletsPerSecondIncrease);
+        }
+        else if (_level < _maxLevel)
         {
             _level++;
             EnableBarrelsByLevel(_level);
+            SetFireRate(_startBulletsPerSecond);
         }
-
-        if (BulletsPerSecond < _maxBulletsPerSecond)
-        {
-            float newFireRate = BulletsPerSecond + _bulletsPerSecondIncrease;
-            if (newFireRate > 5)
-            {
-                newFireRate = 5;
-            }
-            SetFireRate(newFireRate);
-
-        }
-
+        Debug.Log(_level + " " + BulletsPerSecond);
     }
+
 
     private void SetLevel1()
     {
