@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MainWeapon : MonoBehaviour
 {
-    [SerializeField] private Transform[] _shootPoints;
+    [SerializeField] private Transform[] _barrels;
     [SerializeField] private Bullet _bullet;
     [SerializeField] private float _bulletsPerSecond = 1;
     [SerializeField] private GameObject _container;
@@ -47,23 +47,23 @@ public class MainWeapon : MonoBehaviour
 
         while (_isShooting)
         {
-            if (_container.transform.childCount <= _shootPoints.Length)
+            if (_container.transform.childCount <= _barrels.Length)
             {
                 yield return waitForSeconds;
             }
             else
             {
-                for (int i = 0; i < _shootPoints.Length; i++)
+                for (int i = 0; i < _barrels.Length; i++)
                 {
                     isShooted = false;
 
-                    if (_shootPoints[i].gameObject.activeSelf)
+                    if (_barrels[i].gameObject.activeSelf)
                     {
                         while (isShooted == false)
                         {
                             if (TryGetObject(out Bullet bullet))
                             {
-                                FireBullet(bullet, _shootPoints[i]);
+                                FireBullet(bullet, _barrels[i]);
                                 isShooted = true;
                             }
                         }

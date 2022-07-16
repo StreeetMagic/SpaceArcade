@@ -132,13 +132,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 19225905}
+  - component: {fileID: 19225906}
   m_Layer: 0
   m_Name: Barrel5
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &19225905
 Transform:
   m_ObjectHideFlags: 0
@@ -153,6 +154,18 @@ Transform:
   m_Father: {fileID: 1552515440}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &19225906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19225904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2839c42c65c73446b3738acbc8e3eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &58022739
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,13 +299,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 248180603}
+  - component: {fileID: 248180604}
   m_Layer: 0
   m_Name: Barrel1
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &248180603
 Transform:
   m_ObjectHideFlags: 0
@@ -307,6 +321,18 @@ Transform:
   m_Father: {fileID: 1552515440}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &248180604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248180602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2839c42c65c73446b3738acbc8e3eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &490990385
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,13 +342,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 490990386}
+  - component: {fileID: 490990387}
   m_Layer: 0
   m_Name: Barrel2
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &490990386
 Transform:
   m_ObjectHideFlags: 0
@@ -337,6 +364,18 @@ Transform:
   m_Father: {fileID: 1552515440}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &490990387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490990385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2839c42c65c73446b3738acbc8e3eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,6 +1039,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1494267901}
+  - component: {fileID: 1494267902}
   m_Layer: 0
   m_Name: Barrel3
   m_TagString: Untagged
@@ -1021,6 +1061,18 @@ Transform:
   m_Father: {fileID: 1552515440}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1494267902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494267900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2839c42c65c73446b3738acbc8e3eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1552515439
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,7 +1122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fdfd35cdc0a5ea4882023e0e11912ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shootPoints:
+  _barrels:
   - {fileID: 248180603}
   - {fileID: 490990386}
   - {fileID: 1494267901}
@@ -1331,13 +1383,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2088717034}
+  - component: {fileID: 2088717035}
   m_Layer: 0
   m_Name: Barrel4
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2088717034
 Transform:
   m_ObjectHideFlags: 0
@@ -1352,3 +1405,15 @@ Transform:
   m_Father: {fileID: 1552515440}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2088717035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088717033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2839c42c65c73446b3738acbc8e3eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -6,8 +6,6 @@ namespace Enemy
 {
     public class EnemyBullet : Bullet
     {
-        private Transform _parent;
-
         private void Update()
         {
             transform.Translate(Vector3.up * Speed * Time.deltaTime);
@@ -15,8 +13,6 @@ namespace Enemy
 
         protected override void OnEnable()
         {
-            
-            
             Speed = 5;
         }
 

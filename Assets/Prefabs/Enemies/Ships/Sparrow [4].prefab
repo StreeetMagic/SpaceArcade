@@ -254,7 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fdfd35cdc0a5ea4882023e0e11912ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shootPoints:
+  _barrels:
   - {fileID: 346888532}
   - {fileID: 281681687}
   - {fileID: 671701724}
