@@ -6,11 +6,14 @@ namespace Enemy
     [RequireComponent(typeof(Movement))]
     public abstract class Enemy : MonoBehaviour
     {
-        [SerializeField] private float _currentHealth;
-        [SerializeField] private float _maxHealth;
-
         public event Action<float> HealthChanged;
 
+        [SerializeField] private float _maxHealth;
+        [SerializeField] private MainWeapon _mainWeapon;
+        [SerializeField] private Transform _activeBulletPool;
+        
+        
+        private float _currentHealth;
         private Transform _parent;
         private float _collisionDamage = 1f;
 
@@ -20,9 +23,9 @@ namespace Enemy
         private void Awake()
         {
             _currentHealth = _maxHealth;
+            
             Movement = GetComponent<Movement>();
             _parent = transform.parent;
-
         }
 
         public void SetAliveContainer(Transform parent)
@@ -32,6 +35,7 @@ namespace Enemy
 
         private void OnEnable()
         {
+            _mainWeapon.SetActiveBulletPool(_activeBulletPool);
             XPosition = GetRandomXposition();
         }
 
@@ -63,9 +67,9 @@ namespace Enemy
 
         private void Die()
         {
-            gameObject.SetActive(false);
             _currentHealth = _maxHealth;
             HealthChanged?.Invoke(_currentHealth / _maxHealth);
+            gameObject.SetActive(false);
         }
 
         public void TakeDamage(float damage)
@@ -78,5 +82,12 @@ namespace Enemy
                 Die();
             }
         }
+
+        public void GetActiveBulletPool(Transform pool)
+        {
+            _activeBulletPool = pool;
+        }
+
+        
     }
 }

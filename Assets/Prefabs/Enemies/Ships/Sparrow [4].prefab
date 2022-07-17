@@ -178,7 +178,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1268627700}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1206523925
 GameObject:
@@ -238,6 +238,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 7657182804548148965}
   - {fileID: 1135906022}
   m_Father: {fileID: 149651560141839734}
   m_RootOrder: 0
@@ -268,6 +269,7 @@ MonoBehaviour:
   _container: {fileID: 1135906021}
   _capacity: 100
   _pool: []
+  _activeObjectPool: {fileID: 0}
 --- !u!1 &1391646385
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,8 +511,8 @@ Transform:
   - {fileID: 732428483}
   - {fileID: 1206523926}
   - {fileID: 1391646386}
-  m_Father: {fileID: 149651560141839734}
-  m_RootOrder: 1
+  m_Father: {fileID: 1268627700}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5065191953388980594
 GameObject:
@@ -523,6 +525,8 @@ GameObject:
   - component: {fileID: 5065191953388980599}
   - component: {fileID: 4055832748388715368}
   - component: {fileID: 2892396201988158289}
+  - component: {fileID: 8411615334647027983}
+  - component: {fileID: 1614246791152594215}
   m_Layer: 0
   m_Name: Sparrow [4]
   m_TagString: Untagged
@@ -572,8 +576,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec4e8349edf66cb41823022079dbd728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentHealth: 0
-  _maxHealth: 0
+  _maxHealth: 10
+  _mainWeapon: {fileID: 5551510816211582844}
+--- !u!50 &8411615334647027983
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5065191953388980594}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!58 &1614246791152594215
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5065191953388980594}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.008411291, y: -0.028932806}
+  serializedVersion: 2
+  m_Radius: 0.75054556
 --- !u!1 &7195963479926629001
 GameObject:
   m_ObjectHideFlags: 0
@@ -764,8 +805,6 @@ GameObject:
   m_Component:
   - component: {fileID: 149651560141839734}
   - component: {fileID: 1973865632995183098}
-  - component: {fileID: 5643319658490384389}
-  - component: {fileID: 754699903089899475}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -785,7 +824,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1268627700}
-  - {fileID: 7657182804548148965}
   m_Father: {fileID: 5065191953388980599}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -840,43 +878,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &5643319658490384389
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8142288882601432948}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!58 &754699903089899475
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8142288882601432948}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.008411291, y: -0.028932806}
-  serializedVersion: 2
-  m_Radius: 0.75054556
 --- !u!1 &9044756797049869693
 GameObject:
   m_ObjectHideFlags: 0

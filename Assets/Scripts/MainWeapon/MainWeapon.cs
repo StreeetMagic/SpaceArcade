@@ -10,12 +10,12 @@ public class MainWeapon : MonoBehaviour
     [SerializeField] private GameObject _container;
     [SerializeField] private int _capacity;
     [SerializeField] private List<Bullet> _pool = new List<Bullet>();
+    [SerializeField] private Transform _activeBulletPool;
 
     private Coroutine _shooting;
-
     private bool _isShooting = true;
 
-    public float BulletsPerSecond => _bulletsPerSecond;
+    protected float BulletsPerSecond => _bulletsPerSecond;
 
     private void OnEnable()
     {
@@ -38,7 +38,7 @@ public class MainWeapon : MonoBehaviour
     {
         bullet.gameObject.SetActive(true);
         bullet.transform.SetPositionAndRotation(shootingPoint.position, shootingPoint.rotation);
-        bullet.transform.SetParent(null);
+        bullet.transform.SetParent(_activeBulletPool);
     }
 
     private IEnumerator Shooting()
@@ -98,6 +98,11 @@ public class MainWeapon : MonoBehaviour
             StopCoroutine(_shooting);
         }
         _shooting = StartCoroutine(Shooting());
+    }
+
+    public void SetActiveBulletPool(Transform pool)
+    {
+        _activeBulletPool = pool;
     }
 }
 
