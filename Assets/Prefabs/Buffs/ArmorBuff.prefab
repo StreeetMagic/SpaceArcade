@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2508637908205926569}
   - component: {fileID: 2508637908205926568}
   - component: {fileID: 2508637908205926575}
-  - component: {fileID: 2508637908205926571}
+  - component: {fileID: 5044013537897360115}
   m_Layer: 0
-  m_Name: MainWeapornBuff
+  m_Name: ArmorBuff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2508637908205926574}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.89, y: 2.22, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 2}
+  m_LocalScale: {x: 1.3424, y: 1.3424, z: 1.3424}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: f38f62a9502737f499b7dcd7ba128fd3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 71751495c788b054799728020c27ef26, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,7 +98,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.011165738, y: 0.000000029802322}
+  m_Offset: {x: -0.0021409988, y: 0.0026613772}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -109,7 +109,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3882265, y: 0.5173021}
+  m_Size: {x: 0.3928882, y: 0.5119794}
   m_EdgeRadius: 0
 --- !u!50 &2508637908205926575
 Rigidbody2D:
@@ -132,7 +132,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2508637908205926571
+--- !u!114 &5044013537897360115
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,6 +141,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2508637908205926574}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7df13bb1577b1b488df4d235edb0110, type: 3}
+  m_Script: {fileID: 11500000, guid: 14452e65acc8eb9479ec7f29a2990192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

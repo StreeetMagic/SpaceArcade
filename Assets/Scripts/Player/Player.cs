@@ -8,46 +8,60 @@ namespace Player
 {
     public class Player : MonoBehaviour
     {
-        [SerializeField] private PlayerMainWeapon _mainWeapon;
-
-        private float _health;
-        private float _armor;
-
-        private float _startingHealth = 5;
-        private float _startingArmor = 10;
-
         public event Action <float> HealthChanged;
         public event Action <float> ArmorChanged;
 
+        [SerializeField] private PlayerMainWeapon _mainWeapon;
+
+        [field: SerializeField] public float StartingHealth { get; private set; } = 5;
+        [field: SerializeField] public float StartingArmor { get; private set; } = 10;
+        [field: SerializeField] public float Health { get; private set; }
+        [field: SerializeField] public float Armor { get; private set; }
+
         private void Awake()
         {
-            _health = _startingHealth;
-            HealthChanged?.Invoke(_health);
-            _armor = _startingArmor;
-            ArmorChanged?.Invoke(_armor);
+            Health = StartingHealth;
+            Armor = StartingArmor;
         }
 
         public void TakeDamage(float damage)
         {
-            if (_armor >= 1)
+            if (Armor >= 1)
             {
-                _armor -= damage;
+                Armor -= damage;
 
-                if (_armor < 0)
+                if (Armor < 0)
                 {
-                    _armor = 0;
+                    Armor = 0;
                 }
-                ArmorChanged?.Invoke(_armor);
+                ArmorChanged?.Invoke(Armor);
             }
             else
             {
-                _health -= damage;
-                if (_health <= 0)
+                Health -= damage;
+                if (Health <= 0)
                 {
-                    _health = 0;
+                    Health = 0;
                     Die();
                 }
-                HealthChanged?.Invoke(_health);
+                HealthChanged?.Invoke(Health);
+            }
+        }
+
+        public void GainArmor()
+        {
+            Armor++;
+            ArmorChanged?.Invoke(Armor);
+        }
+
+        public void GainHealth()
+        {
+            float maxHealth = StartingHealth;
+            
+            if (Health < maxHealth)
+            {
+                Health++;
+                HealthChanged?.Invoke(Health);
             }
         }
 

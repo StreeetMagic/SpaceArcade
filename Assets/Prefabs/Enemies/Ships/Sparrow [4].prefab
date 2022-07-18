@@ -269,7 +269,7 @@ MonoBehaviour:
   _container: {fileID: 1135906021}
   _capacity: 100
   _pool: []
-  _activeObjectPool: {fileID: 0}
+  _activeBulletPool: {fileID: 0}
 --- !u!1 &1391646385
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,6 +578,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 10
   _mainWeapon: {fileID: 5551510816211582844}
+  _activeBulletPool: {fileID: 0}
 --- !u!50 &8411615334647027983
 Rigidbody2D:
   serializedVersion: 4
@@ -805,6 +806,7 @@ GameObject:
   m_Component:
   - component: {fileID: 149651560141839734}
   - component: {fileID: 1973865632995183098}
+  - component: {fileID: 344030580326506416}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -878,6 +880,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &344030580326506416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8142288882601432948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217252a6ddb95cc4290de49afc65d18d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9044756797049869693
 GameObject:
   m_ObjectHideFlags: 0

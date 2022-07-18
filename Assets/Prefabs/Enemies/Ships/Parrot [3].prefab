@@ -169,8 +169,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2283198521964830701}
-  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.5738006, y: 1.7415981, z: -1.0231221}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4214868282697043755}
@@ -231,7 +231,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4742034283934888690}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.57, y: -0.23, z: 0}
+  m_LocalPosition: {x: -0.53, y: -0.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4214868282697043755}
@@ -491,6 +491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 10
   _mainWeapon: {fileID: 3835597661990478570}
+  _activeBulletPool: {fileID: 0}
 --- !u!1 &5332916141815726597
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,8 +676,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8696112295529806506}
-  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 1.7415984, y: -0.5738003, z: 1.0231221}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5131692382426242648}
@@ -707,7 +708,7 @@ MonoBehaviour:
   _container: {fileID: 5332916141815726597}
   _capacity: 100
   _pool: []
-  _activeObjectPool: {fileID: 0}
+  _activeBulletPool: {fileID: 0}
 --- !u!1 &8807765143762723554
 GameObject:
   m_ObjectHideFlags: 0

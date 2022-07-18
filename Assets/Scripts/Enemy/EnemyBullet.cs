@@ -11,7 +11,7 @@ namespace Enemy
             transform.Translate(Vector3.up * Speed * Time.deltaTime);
         }
 
-        protected override void OnEnable()
+        protected void OnEnable()
         {
             Speed = 5;
         }
@@ -24,11 +24,6 @@ namespace Enemy
                 gameObject.SetActive(false);
             }
 
-            if (collision.TryGetComponent(out Bullet bullet))
-            {
-                gameObject.SetActive(false);
-                bullet.gameObject.SetActive(false);
-            }
         }
 
 

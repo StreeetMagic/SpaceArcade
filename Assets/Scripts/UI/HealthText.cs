@@ -12,6 +12,7 @@ public class HealthText : MonoBehaviour
     private void OnEnable()
     {
         _player.HealthChanged += OnHealthChanged;
+        _health.text = _player.Health.ToString();
     }
 
     private void OnDisable()
