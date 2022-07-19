@@ -7,13 +7,14 @@ namespace Enemy
 {
     public class Spawner : MonoBehaviour
     {
+        [SerializeField] private float _cooldown = 1f;
+        [SerializeField] private int _capacity;
+
         [SerializeField] private Transform[] _spawnPoints;
         [SerializeField] private Enemy[] _enemies;
         [SerializeField] private GameObject _container;
-        [SerializeField] private float _cooldown = 1f;
-        [SerializeField] private int _capacity;
-        [SerializeField] private Transform _ActiveEnemyPool;
-        [SerializeField] private Transform _ActiveEnemyBulletPool;
+        [SerializeField] private ActiveEnemyPool _activePool;
+        [SerializeField] private Transform _activeEnemyBulletPool;
 
         private float _elapsedTime;
         private int _enemiesAvaliable = 1;
@@ -42,7 +43,7 @@ namespace Enemy
                 for (int j = 0; j < _capacity; j++)
                 {
                     Enemy spawned = Instantiate(_enemies[i], _container.transform);
-                    spawned.GetActiveBulletPool(_ActiveEnemyBulletPool);
+                    spawned.GetActiveBulletPool(_activeEnemyBulletPool);
                     spawned.gameObject.SetActive(false);
                     _pools[i].Add(spawned);
                 }
@@ -78,7 +79,8 @@ namespace Enemy
         {
             enemy.gameObject.SetActive(true);
             enemy.transform.position = spawnPoint;
-            enemy.SetAliveContainer(_ActiveEnemyPool);
+            enemy.SetAliveContainer(_activePool);
+            //_activePool.AddEnemy(enemy);
         }
 
         private IEnumerator NewEnemiesTimer()

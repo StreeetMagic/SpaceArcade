@@ -11,10 +11,11 @@ namespace Enemy
         [SerializeField] private float _maxHealth;
         [SerializeField] private MainWeapon _mainWeapon;
         [SerializeField] private Transform _activeBulletPool;
-        
-        
+
+        [SerializeField] private Transform _inactivePool;
+        [SerializeField] private Transform _activePool;
+
         private float _currentHealth;
-        private Transform _parent;
         private float _collisionDamage = 1f;
 
         public Movement Movement { get; private set; }
@@ -23,19 +24,14 @@ namespace Enemy
         private void Awake()
         {
             _currentHealth = _maxHealth;
-            
             Movement = GetComponent<Movement>();
-            _parent = transform.parent;
-        }
-
-        public void SetAliveContainer(Transform parent)
-        {
-            transform.SetParent(parent);
+            _inactivePool = transform.parent;
         }
 
         private void OnEnable()
         {
             _mainWeapon.SetActiveBulletPool(_activeBulletPool);
+            _activePool = transform.parent;
             XPosition = GetRandomXposition();
         }
 
@@ -43,7 +39,7 @@ namespace Enemy
         {
             Invoke(nameof(ReAttachParent), .001f);
         }
-        
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.TryGetComponent(out Player.Player player))
@@ -52,6 +48,14 @@ namespace Enemy
                 Die();
             }
         }
+
+        public void SetAliveContainer(ActiveEnemyPool parent)
+        {
+            transform.SetParent(parent.transform);
+            _activePool = parent.transform;
+        }
+
+
 
         private int GetRandomXposition()
         {
@@ -62,13 +66,14 @@ namespace Enemy
 
         private void ReAttachParent()
         {
-            transform.SetParent(_parent);
+            transform.SetParent(_inactivePool);
         }
 
         private void Die()
         {
             _currentHealth = _maxHealth;
             HealthChanged?.Invoke(_currentHealth / _maxHealth);
+            _activePool.GetComponent<ActiveEnemyPool>().GetEnemyTransform(transform);
             gameObject.SetActive(false);
         }
 
@@ -87,7 +92,5 @@ namespace Enemy
         {
             _activeBulletPool = pool;
         }
-
-        
     }
 }
