@@ -8,8 +8,9 @@ public class BuffSpawner : MonoBehaviour
     [SerializeField] private Buff[] _buffs;
     [SerializeField] private GameObject _container;
     [SerializeField] private Transform _ActiveBuffPool;
-    [SerializeField] private List<List<Buff>> _pools = new List<List<Buff>>();
     [SerializeField] private ActiveEnemyPool _activeEnemyPool;
+
+    private List<List<Buff>> _pools = new List<List<Buff>>();
 
     [field: SerializeField] public int Capacity { get; private set; }
 

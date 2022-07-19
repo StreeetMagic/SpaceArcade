@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Enemy
 {
-    public class Сrow : Enemy
+    public class Crow : Enemy
     {
         private void Update()
         {

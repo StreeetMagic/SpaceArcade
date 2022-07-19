@@ -528,7 +528,7 @@ GameObject:
   - component: {fileID: 8411615334647027983}
   - component: {fileID: 1614246791152594215}
   m_Layer: 0
-  m_Name: Sparrow [4]
+  m_Name: '[4] Sparrow'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

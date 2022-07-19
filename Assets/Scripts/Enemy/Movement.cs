@@ -6,90 +6,88 @@ namespace Enemy
 {
     public class Movement : MonoBehaviour
     {
-        [SerializeField] private float _DefaultXMoveSpeed = 3;
-        [SerializeField] private float _DefaultYMoveSpeed = 2;
-        [SerializeField] private StatUpgrader _statUpgrader;
+        private StatUpgrader _statUpgrader;
 
-        [SerializeField] private float _xMoveSpeed;
-        [SerializeField] private float _yMoveSpeed;
+        [field: SerializeField] public float DefaultXMoveSpeed { get; private set; } = 3;
+        [field: SerializeField] public float DefaultYMoveSpeed { get; private set; } = 2;
+        [field: SerializeField] public float XMoveSpeed { get; private set; }
+        [field: SerializeField] public float YMoveSpeed { get; private set; }
 
-        [SerializeField] private bool _goesTop = true;
-        [SerializeField] private bool _goesLeft = true;
-        [SerializeField] private int _YBorder = 4;
-        [SerializeField] private int _XBorder = 7;
+        [field: SerializeField] public int YBorder { get; private set; } = 4;
+        [field: SerializeField] public int XBorder { get; private set; } = 7;
+        [field: SerializeField] public bool GoesTop { get; private set; } = true;
+        [field: SerializeField] public bool GoesLeft { get; private set; } = true;
 
-
-        public float XMoveSpeed => _xMoveSpeed;
 
         private void OnEnable()
         {
             if (_statUpgrader)
             {
-                _xMoveSpeed = _DefaultXMoveSpeed * _statUpgrader.MoveSpeedMultiplier;
-                _yMoveSpeed = _DefaultYMoveSpeed * _statUpgrader.MoveSpeedMultiplier;
+                XMoveSpeed = DefaultXMoveSpeed * _statUpgrader.MoveSpeedMultiplier;
+                YMoveSpeed = DefaultYMoveSpeed * _statUpgrader.MoveSpeedMultiplier;
             }
         }
 
         public void MoveLeft()
         {
-            transform.position -= new Vector3(_xMoveSpeed * Time.deltaTime, 0, 0);
+            transform.position -= new Vector3(XMoveSpeed * Time.deltaTime, 0, 0);
         }
 
         public void MoveRight()
         {
-            transform.position += new Vector3(_xMoveSpeed * Time.deltaTime, 0, 0);
+            transform.position += new Vector3(XMoveSpeed * Time.deltaTime, 0, 0);
         }
 
         public void MoveDown()
         {
-            transform.position -= new Vector3(0, _yMoveSpeed * Time.deltaTime, 0);
+            transform.position -= new Vector3(0, YMoveSpeed * Time.deltaTime, 0);
         }
 
         public void MoveTop()
         {
-            transform.position += new Vector3(0, _yMoveSpeed * Time.deltaTime, 0);
+            transform.position += new Vector3(0, YMoveSpeed * Time.deltaTime, 0);
         }
 
         public void StrafeY()
         {
-            if (_goesTop)
+            if (GoesTop)
             {
                 MoveTop();
 
-                if (transform.position.y >= _YBorder)
+                if (transform.position.y >= YBorder)
                 {
-                    _goesTop = false;
+                    GoesTop = false;
                 }
             }
             else
             {
                 MoveDown();
 
-                if (transform.position.y <= -_YBorder)
+                if (transform.position.y <= -YBorder)
                 {
-                    _goesTop = true;
+                    GoesTop = true;
                 }
             }
         }
 
         public void StrafeX()
         {
-            if (_goesLeft)
+            if (GoesLeft)
             {
                 MoveLeft();
 
-                if (transform.position.x <= -_XBorder)
+                if (transform.position.x <= -XBorder)
                 {
-                    _goesLeft = false;
+                    GoesLeft = false;
                 }
             }
             else
             {
                 MoveRight();
 
-                if (transform.position.x >= _XBorder)
+                if (transform.position.x >= XBorder)
                 {
-                    _goesLeft = true;
+                    GoesLeft = true;
                 }
             }
         }

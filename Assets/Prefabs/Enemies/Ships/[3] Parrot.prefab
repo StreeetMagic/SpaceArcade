@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 4175979213491125027}
   - component: {fileID: 8613134170774714917}
   m_Layer: 0
-  m_Name: Parrot [3]
+  m_Name: '[3] Parrot'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
