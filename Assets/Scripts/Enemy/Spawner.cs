@@ -5,10 +5,14 @@ using System.Linq;
 
 namespace Enemy
 {
+    [RequireComponent(typeof(StatUpgrader))]
     public class Spawner : MonoBehaviour
     {
         [SerializeField] private float _cooldown = 1f;
         [SerializeField] private int _capacity;
+        [SerializeField] private float _elapsedTime;
+        [SerializeField] private int _enemiesAvaliable = 1;
+        [SerializeField] private int _newEnemyCooldown = 0;
 
         [SerializeField] private Transform[] _spawnPoints;
         [SerializeField] private Enemy[] _enemies;
@@ -16,9 +20,8 @@ namespace Enemy
         [SerializeField] private ActiveEnemyPool _activePool;
         [SerializeField] private Transform _activeEnemyBulletPool;
 
-        private float _elapsedTime;
-        private int _enemiesAvaliable = 1;
-        private int _newEnemyCooldown = 0;
+        [SerializeField] private StatUpgrader _statUpgrader;
+
         private List<List<Enemy>> _pools = new List<List<Enemy>>();
 
         private void FillPools()
@@ -31,6 +34,7 @@ namespace Enemy
 
         private void Start()
         {
+            _statUpgrader = GetComponent<StatUpgrader>();
             FillPools();
             Initialize();
             StartCoroutine(NewEnemiesTimer());
@@ -44,6 +48,7 @@ namespace Enemy
                 {
                     Enemy spawned = Instantiate(_enemies[i], _container.transform);
                     spawned.GetActiveBulletPool(_activeEnemyBulletPool);
+                    spawned.GetComponent<Movement>().GetStatUpgrader(_statUpgrader);
                     spawned.gameObject.SetActive(false);
                     _pools[i].Add(spawned);
                 }
@@ -80,7 +85,6 @@ namespace Enemy
             enemy.gameObject.SetActive(true);
             enemy.transform.position = spawnPoint;
             enemy.SetAliveContainer(_activePool);
-            //_activePool.AddEnemy(enemy);
         }
 
         private IEnumerator NewEnemiesTimer()

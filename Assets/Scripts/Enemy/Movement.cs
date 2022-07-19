@@ -8,21 +8,26 @@ namespace Enemy
     {
         [SerializeField] private float _DefaultXMoveSpeed = 3;
         [SerializeField] private float _DefaultYMoveSpeed = 2;
+        [SerializeField] private StatUpgrader _statUpgrader;
 
-        private float _xMoveSpeed;
-        private float _yMoveSpeed;
+        [SerializeField] private float _xMoveSpeed;
+        [SerializeField] private float _yMoveSpeed;
 
-        private bool _goesTop = true;
-        private bool _goesLeft = true;
-        private int _YBorder = 4;
-        private int _XBorder = 7;
+        [SerializeField] private bool _goesTop = true;
+        [SerializeField] private bool _goesLeft = true;
+        [SerializeField] private int _YBorder = 4;
+        [SerializeField] private int _XBorder = 7;
+
 
         public float XMoveSpeed => _xMoveSpeed;
 
         private void OnEnable()
         {
-             _xMoveSpeed = _DefaultXMoveSpeed * DiffucultySingleton.Instance.MoveSpeedMultiplier;
-             _yMoveSpeed = _DefaultYMoveSpeed * DiffucultySingleton.Instance.MoveSpeedMultiplier;
+            if (_statUpgrader)
+            {
+                _xMoveSpeed = _DefaultXMoveSpeed * _statUpgrader.MoveSpeedMultiplier;
+                _yMoveSpeed = _DefaultYMoveSpeed * _statUpgrader.MoveSpeedMultiplier;
+            }
         }
 
         public void MoveLeft()
@@ -89,7 +94,10 @@ namespace Enemy
             }
         }
 
-
+        public void GetStatUpgrader(StatUpgrader statUpgrader)
+        {
+            _statUpgrader = statUpgrader;
+        }
     }
 }
 
