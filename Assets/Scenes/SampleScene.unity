@@ -196,6 +196,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2839c42c65c73446b3738acbc8e3eae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &20276289
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 20276290}
+  m_Layer: 0
+  m_Name: Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &20276290
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20276289}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.9839093, y: -0.71761763, z: -1.5084186}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 908345100}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &58022739
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,6 +512,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 327749141}
+  - component: {fileID: 327749142}
   m_Layer: 0
   m_Name: Enemies
   m_TagString: Untagged
@@ -503,6 +534,19 @@ Transform:
   m_Father: {fileID: 1228309910}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &327749142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327749140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2678f05ee09be2147bb4b8c00a202d2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyPosition: {fileID: 0}
 --- !u!1 &465272692
 GameObject:
   m_ObjectHideFlags: 0
@@ -1114,6 +1158,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 908345100}
+  - component: {fileID: 908345101}
   m_Layer: 0
   m_Name: Buff spawner
   m_TagString: Untagged
@@ -1131,10 +1176,32 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.21487351, y: 0.81691337, z: -3.6341028}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 20276290}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &908345101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908345099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d37359cff4b295499802cf5d6854805, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnPoint: {fileID: 0}
+  _buffs:
+  - {fileID: 5044013537897360115, guid: 26df1f07299095441a120a74d74a2856, type: 3}
+  - {fileID: 3783307293908559051, guid: eecc2e5c6778ebe4a851c1f34820996c, type: 3}
+  - {fileID: 2508637908205926571, guid: 4b2dff647179ef44d805df4993124f2f, type: 3}
+  _container: {fileID: 20276289}
+  _ActiveBuffPool: {fileID: 1218635136}
+  _activeEnemyPool: {fileID: 327749142}
+  <Capacity>k__BackingField: 2
 --- !u!1 &912439316
 GameObject:
   m_ObjectHideFlags: 0
@@ -2150,6 +2217,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40e00885a4397114f83d652d09084ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cooldown: 2
+  _capacity: 10
   _spawnPoints:
   - {fileID: 880204789}
   - {fileID: 1785511461}
@@ -2163,10 +2232,8 @@ MonoBehaviour:
   - {fileID: -463979578444678899, guid: b89ba74d36ee5d94ea4fc75aa9327502, type: 3}
   - {fileID: -463979578444678899, guid: b89ba74d36ee5d94ea4fc75aa9327502, type: 3}
   _container: {fileID: 1856118560}
-  _cooldown: 2
-  _capacity: 10
-  _ActiveEnemyPool: {fileID: 327749141}
-  _ActiveEnemyBulletPool: {fileID: 4221489}
+  _activePool: {fileID: 327749142}
+  _activeEnemyBulletPool: {fileID: 4221489}
 --- !u!1 &1828074454
 GameObject:
   m_ObjectHideFlags: 0

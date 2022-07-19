@@ -11,11 +11,7 @@ public class BuffSpawner : MonoBehaviour
     [SerializeField] private List<List<Buff>> _pools = new List<List<Buff>>();
     [SerializeField] private ActiveEnemyPool _activeEnemyPool;
 
-
-    [field: SerializeField] public float Cooldown { get; private set; } = 1f;
     [field: SerializeField] public int Capacity { get; private set; }
-    [field: SerializeField] public float ElapsedTime { get; private set; }
-    [field: SerializeField] public int BuffsAvaliable { get; private set; } = 1;
 
     private void Start()
     {
@@ -40,7 +36,7 @@ public class BuffSpawner : MonoBehaviour
             _pools.Add(new List<Buff>());
         }
     }
-          
+
     protected void Initialize()
     {
         for (int i = 0; i < _buffs.Length; i++)
@@ -64,11 +60,11 @@ public class BuffSpawner : MonoBehaviour
 
     private void SpawnBuff(Transform spawnPoint)
     {
-        if(TryGetObject(out Buff result))
+        if (TryGetObject(out Buff buff))
         {
-            result.gameObject.SetActive(true);
-            result.transform.position = spawnPoint.position;
-            result.SetActiveContainer(_ActiveBuffPool);
+            buff.gameObject.SetActive(true);
+            buff.transform.position = spawnPoint.position;
+            buff.SetActiveContainer(_ActiveBuffPool);
         }
     }
 }
