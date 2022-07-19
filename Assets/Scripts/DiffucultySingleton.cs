@@ -5,13 +5,14 @@ using UnityEngine;
 public class DiffucultySingleton : MonoBehaviour
 {
     public static DiffucultySingleton Instance { get; private set; }
+    
+    [SerializeField] private float _defaultValue = .1f;
 
-    private float _defaultValue = 1f;
+    [SerializeField] private float _moveSpeedMultiplier;
+    [SerializeField] private float _maxMoveSpeedMultiplier = 2f;
+    [SerializeField] private float _moveSpeedMultiplierDelta = .1f;
+    [SerializeField] private float _moveSpeedCooldown = 30;
 
-    private float _moveSpeedMultiplier;
-    private float _maxMoveSpeedMultiplier = 2f;
-    private float _moveSpeedMultiplierDelta = 1.2f;
-    private float _moveSpeedCooldown = 5;
     
     public float MoveSpeedMultiplier => _moveSpeedMultiplier;
 
@@ -56,6 +57,7 @@ public class DiffucultySingleton : MonoBehaviour
             {
                 _moveSpeedMultiplier = _maxMoveSpeedMultiplier;
             }
+            yield return null;
         }
     }
 

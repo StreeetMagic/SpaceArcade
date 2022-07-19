@@ -8,16 +8,13 @@ public abstract class Bullet : MonoBehaviour
 {
     private GameObject _parent;
 
-    public float Speed { get; protected set; } = 15;
-
-    public int Damage { get; protected set; } = 1;
+    [field:SerializeField] public float Speed { get; protected set; } = 15;
+    [field: SerializeField] public int Damage { get; protected set; } = 1;
 
     private void Awake()
     {
         _parent = transform.parent.gameObject;
     }
-
-    protected abstract void OnEnable();
 
 
     private void OnDisable()

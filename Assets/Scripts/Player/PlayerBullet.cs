@@ -6,10 +6,7 @@ namespace Player
 {
     public class PlayerBullet : Bullet
     {
-        protected override void OnEnable()
-        {
 
-        }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -17,6 +14,13 @@ namespace Player
             {
                 enemy.TakeDamage(Damage);
                 gameObject.SetActive(false);
+            }
+
+
+            if (collision.TryGetComponent(out Bullet bullet))
+            {
+                gameObject.SetActive(false);
+                bullet.gameObject.SetActive(false);
             }
         }
         private void Update()

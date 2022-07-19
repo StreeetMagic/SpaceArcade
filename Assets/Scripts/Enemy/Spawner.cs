@@ -7,11 +7,14 @@ namespace Enemy
 {
     public class Spawner : MonoBehaviour
     {
+        [SerializeField] private float _cooldown = 1f;
+        [SerializeField] private int _capacity;
+
         [SerializeField] private Transform[] _spawnPoints;
         [SerializeField] private Enemy[] _enemies;
         [SerializeField] private GameObject _container;
-        [SerializeField] private float _cooldown = 1f;
-        [SerializeField] private int _capacity;
+        [SerializeField] private ActiveEnemyPool _activePool;
+        [SerializeField] private Transform _activeEnemyBulletPool;
 
         private float _elapsedTime;
         private int _enemiesAvaliable = 1;
@@ -32,6 +35,7 @@ namespace Enemy
             Initialize();
             StartCoroutine(NewEnemiesTimer());
         }
+
         protected void Initialize()
         {
             for (int i = 0; i < _enemies.Length; i++)
@@ -39,19 +43,19 @@ namespace Enemy
                 for (int j = 0; j < _capacity; j++)
                 {
                     Enemy spawned = Instantiate(_enemies[i], _container.transform);
+                    spawned.GetActiveBulletPool(_activeEnemyBulletPool);
                     spawned.gameObject.SetActive(false);
                     _pools[i].Add(spawned);
                 }
             }
         }
-       
+
         private bool TryGetObject(out Enemy result)
         {
             int randomEnemyPool = Random.Range(0, _enemiesAvaliable);
             int randomEnemy = Random.Range(0, _capacity);
             result = _pools[randomEnemyPool][randomEnemy];
 
-            //return result.gameObject.activeSelf == false ? result != null : result == null;
             return result.gameObject.activeSelf == false;
 
         }
@@ -75,6 +79,8 @@ namespace Enemy
         {
             enemy.gameObject.SetActive(true);
             enemy.transform.position = spawnPoint;
+            enemy.SetAliveContainer(_activePool);
+            //_activePool.AddEnemy(enemy);
         }
 
         private IEnumerator NewEnemiesTimer()
@@ -89,8 +95,6 @@ namespace Enemy
                 yield return cooldown;
             }
         }
-
-      
     }
 }
 
