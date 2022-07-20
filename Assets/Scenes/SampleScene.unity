@@ -1965,7 +1965,7 @@ MonoBehaviour:
   _pool: []
   _activeBulletPool: {fileID: 126892722}
   <Capacity>k__BackingField: 100
-  <BulletsPerSecond>k__BackingField: 1
+  <BulletsPerSecond>k__BackingField: 0.5
   <IsShooting>k__BackingField: 1
   _level: 0
 --- !u!4 &1668393856 stripped
@@ -2186,10 +2186,9 @@ MonoBehaviour:
   _activePool: {fileID: 327749142}
   _activeBulletPool: {fileID: 126892722}
   _statUpgrader: {fileID: 1797105820}
-  <CurrentSpawnCooldown>k__BackingField: 1
-  <StartSpawnCooldown>k__BackingField: 1
+  <DefaultSpawnCooldown>k__BackingField: 1
   <EnemiesAvaliable>k__BackingField: 1
-  <NewEnemyCooldown>k__BackingField: 0
+  <NewEnemyCooldown>k__BackingField: 20
 --- !u!114 &1797105820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2202,11 +2201,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29a0f19cf15d4ce4da43214da341af79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MoveSpeedDefaultValue>k__BackingField: 0.3
-  <MoveSpeedMultiplier>k__BackingField: 0
-  <MaxMoveSpeedMultiplier>k__BackingField: 2
-  <MoveSpeedMultiplierDelta>k__BackingField: 0.1
-  <MoveSpeedCooldown>k__BackingField: 5
+  <MoveSpeedDefault>k__BackingField: 0.1
+  <MoveSpeedDelta>k__BackingField: 0.1
+  <MoveSpeedMax>k__BackingField: 1.5
+  <MoveSpeedChangeCooldown>k__BackingField: 15
+  <MoveSpeedCurrent>k__BackingField: 0
+  <EnemySpawnDefault>k__BackingField: 5
+  <EnemySpawnDelta>k__BackingField: 0.3
+  <EnemySpawnMax>k__BackingField: 0.5
+  <EnemySpawnChangeCooldown>k__BackingField: 15
+  <EnemySpawnCurrent>k__BackingField: 5
 --- !u!1 &1828074454
 GameObject:
   m_ObjectHideFlags: 0

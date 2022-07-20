@@ -12,7 +12,7 @@ namespace Enemy
         [field: SerializeField] public float CurrentYMoveSpeed { get; private set; }
 
         public int YBorder { get; private set; } = 4;
-        public int XBorder { get; private set; } = 7;
+        public int XBorder { get; private set; } = 6;
         public bool GoesTop { get; private set; } = true;
         public bool GoesLeft { get; private set; } = true;
 

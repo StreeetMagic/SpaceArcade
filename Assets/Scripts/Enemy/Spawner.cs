@@ -15,18 +15,25 @@ namespace Enemy
         [SerializeField] private StatUpgrader _statUpgrader;
 
         private List<List<Enemy>> _pools = new List<List<Enemy>>();
+        
+        [field: SerializeField] public float DefaultSpawnCooldown { get; private set; } = 1;
+        
+        public float CurrentSpawnCooldown
+        {
+            get
+            {
+                return DefaultSpawnCooldown * _statUpgrader.EnemySpawnCurrent;
+            }
+        }
 
-        [field: Header("Spawn settings:")]
 
-        [field: SerializeField] public float CurrentSpawnCooldown { get; private set; }
-        [field: SerializeField] public float StartSpawnCooldown { get; private set; } = 1;
+
         [field: SerializeField] public int EnemiesAvaliable { get; private set; } = 1;
         [field: SerializeField] public int NewEnemyCooldown { get; private set; } = 30;
         public float ElapsedTime { get; private set; }
 
         private void Start()
         {
-            CurrentSpawnCooldown = StartSpawnCooldown;
             FillPools();
             Initialize();
             StartCoroutine(NewEnemiesTimer());
@@ -97,11 +104,6 @@ namespace Enemy
                 EnemiesAvaliable++;
                 yield return cooldown;
             }
-        }
-
-        public void SetStartSpawnCooldown(float value)
-        {
-            StartSpawnCooldown = value;
         }
     }
 }

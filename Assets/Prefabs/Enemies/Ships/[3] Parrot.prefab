@@ -495,7 +495,7 @@ MonoBehaviour:
   _activeBulletPool: {fileID: 0}
   _inactivePool: {fileID: 0}
   _activePool: {fileID: 0}
-  <MaxHealth>k__BackingField: 5
+  <MaxHealth>k__BackingField: 20
   <CurrentHealth>k__BackingField: 0
   <CollisionDamage>k__BackingField: 1
   <XPosition>k__BackingField: 0
@@ -715,7 +715,7 @@ MonoBehaviour:
   _BulletContainer: {fileID: 5332916141815726597}
   _pool: []
   _activeBulletPool: {fileID: 0}
-  <Capacity>k__BackingField: 0
+  <Capacity>k__BackingField: 20
   <BulletsPerSecond>k__BackingField: 1
   <IsShooting>k__BackingField: 1
 --- !u!1 &8807765143762723554

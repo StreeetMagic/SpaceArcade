@@ -10,6 +10,7 @@ public class MainWeapon : MonoBehaviour
     [SerializeField] private List<Bullet> _pool = new List<Bullet>();
     [SerializeField] private Transform _activeBulletPool;
 
+
     private Coroutine _shooting;
 
     [field: SerializeField] public int Capacity { get; private set; }
@@ -96,6 +97,8 @@ public class MainWeapon : MonoBehaviour
             StopCoroutine(_shooting);
         }
         _shooting = StartCoroutine(Shooting());
+
+        Debug.Log(BulletsPerSecond);
     }
 
     public void SetActiveBulletPool(Transform pool)
