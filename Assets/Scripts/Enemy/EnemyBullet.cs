@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Enemy
@@ -23,10 +21,7 @@ namespace Enemy
                 player.TakeDamage(Damage);
                 gameObject.SetActive(false);
             }
-
         }
-
-
     }
 }
 

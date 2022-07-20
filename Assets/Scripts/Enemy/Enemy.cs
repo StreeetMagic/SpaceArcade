@@ -30,6 +30,11 @@ namespace Enemy
 
         private void OnEnable()
         {
+            Debug.Log("Противник включен OnEnable");
+            
+            HealthChanged?.Invoke(CurrentHealth / MaxHealth);
+            Debug.Log(CurrentHealth / MaxHealth);
+
             _mainWeapon.SetActiveBulletPool(_activeBulletPool);
             _activePool = transform.parent;
             XPosition = GetRandomXposition();
@@ -69,8 +74,8 @@ namespace Enemy
 
         private void Die()
         {
+
             CurrentHealth = MaxHealth;
-            HealthChanged?.Invoke(CurrentHealth / MaxHealth);
             _activePool.GetComponent<ActiveEnemyPool>().GetEnemyTransform(transform);
             gameObject.SetActive(false);
         }
@@ -85,6 +90,7 @@ namespace Enemy
                 Die();
             }
         }
+
         public void GetActiveBulletPool(Transform pool)
         {
             _activeBulletPool = pool;

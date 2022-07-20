@@ -7,7 +7,6 @@ namespace Enemy
 {
     public class Spawner : MonoBehaviour
     {
-
         [SerializeField] private Enemy[] _enemies;
         [SerializeField] private Transform[] _spawnPoints;
         [SerializeField] private GameObject _inactivePool;

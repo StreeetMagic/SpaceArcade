@@ -475,8 +475,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56101a2fdc738d54b8ba4595363db6f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _DefaultXMoveSpeed: 3
-  _DefaultYMoveSpeed: 2
+  <DefaultXMoveSpeed>k__BackingField: 3
+  <DefaultYMoveSpeed>k__BackingField: 2
+  <CurrentXMoveSpeed>k__BackingField: 0
+  <CurrentYMoveSpeed>k__BackingField: 0
 --- !u!114 &8613134170774714917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -489,9 +491,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7d4080bcc0c6d4f85e977d1283658e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 10
   _mainWeapon: {fileID: 3835597661990478570}
   _activeBulletPool: {fileID: 0}
+  _inactivePool: {fileID: 0}
+  _activePool: {fileID: 0}
+  <MaxHealth>k__BackingField: 5
+  <CurrentHealth>k__BackingField: 0
+  <CollisionDamage>k__BackingField: 1
+  <XPosition>k__BackingField: 0
 --- !u!1 &5332916141815726597
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,11 +711,12 @@ MonoBehaviour:
   - {fileID: 4117007629027803994}
   - {fileID: 2540989011868705642}
   _bullet: {fileID: 3088936968990765573, guid: 37d278030c614b045aef3dbd6fe35248, type: 3}
-  _bulletsPerSecond: 1
-  _container: {fileID: 5332916141815726597}
-  _capacity: 100
+  _BulletContainer: {fileID: 5332916141815726597}
   _pool: []
   _activeBulletPool: {fileID: 0}
+  <Capacity>k__BackingField: 0
+  <BulletsPerSecond>k__BackingField: 1
+  <IsShooting>k__BackingField: 1
 --- !u!1 &8807765143762723554
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,3 +822,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slider: {fileID: 5272619588393663521}
   _enemy: {fileID: 8613134170774714917}
+  <RecoveryRate>k__BackingField: 50

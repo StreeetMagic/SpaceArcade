@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMainWeapon : MainWeapon
@@ -53,9 +51,7 @@ public class PlayerMainWeapon : MainWeapon
             EnableBarrelsByLevel(_level);
             SetFireRate(_startBulletsPerSecond);
         }
-        Debug.Log(_level + " " + BulletsPerSecond);
     }
-
 
     private void SetLevel1()
     {

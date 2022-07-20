@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,11 +9,13 @@ namespace Enemy
         [SerializeField] private Slider _slider;
         [SerializeField] private Enemy _enemy;
 
-        private float _recoveryRate = 50;
         private Coroutine _coroutine;
+
+        [field: SerializeField] public float RecoveryRate { get; private set; } = 50;
 
         private void OnEnable()
         {
+            _slider.value = 1;
             _enemy.HealthChanged += OnHealthChanged;
         }
 
@@ -36,7 +37,7 @@ namespace Enemy
         {
             while (_slider.value != value)
             {
-                _slider.value = (Mathf.MoveTowards(_slider.value, value, Time.deltaTime * _recoveryRate));
+                _slider.value = (Mathf.MoveTowards(_slider.value, value, Time.deltaTime * RecoveryRate));
                 yield return null;
             }
         }

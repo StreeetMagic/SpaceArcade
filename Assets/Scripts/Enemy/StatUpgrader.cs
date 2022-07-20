@@ -1,35 +1,33 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class StatUpgrader : MonoBehaviour
 {
-    [SerializeField] private float _defaultValue = .1f;
-    [SerializeField] private float _moveSpeedMultiplier;
-    [SerializeField] private float _maxMoveSpeedMultiplier = 2f;
-    [SerializeField] private float _moveSpeedMultiplierDelta = .1f;
-    [SerializeField] private float _moveSpeedCooldown = 30;
-
-    public float MoveSpeedMultiplier => _moveSpeedMultiplier;
+    [field:Header("Move Speed")]
+    [field: SerializeField] public float MoveSpeedDefaultValue { get; private set; } = .1f;
+    [field: SerializeField] public float MoveSpeedMultiplier { get; private set; }
+    [field: SerializeField] public float MaxMoveSpeedMultiplier { get; private set; } = 2f;
+    [field: SerializeField] public float MoveSpeedMultiplierDelta { get; private set; } = .1f;
+    [field: SerializeField] public float MoveSpeedCooldown { get; private set; } = 30;
 
     private void OnEnable()
     {
-        _moveSpeedMultiplier = _defaultValue;
-        StartCoroutine(IncreaseEnemyMoveSpeedMultiplier());
+        MoveSpeedMultiplier = MoveSpeedDefaultValue;
+        StartCoroutine(IncreaseMoveSpeedMultiplier());
     }
 
-    private IEnumerator IncreaseEnemyMoveSpeedMultiplier()
+    private IEnumerator IncreaseMoveSpeedMultiplier()
     {
-        WaitForSeconds cooldown = new WaitForSeconds(_moveSpeedCooldown);
+        WaitForSeconds cooldown = new WaitForSeconds(MoveSpeedCooldown);
 
-        while (_moveSpeedMultiplier <= _maxMoveSpeedMultiplier)
+        while (MoveSpeedMultiplier <= MaxMoveSpeedMultiplier)
         {
             yield return cooldown;
-            _moveSpeedMultiplier += _moveSpeedMultiplierDelta;
+            MoveSpeedMultiplier += MoveSpeedMultiplierDelta;
 
-            if (_moveSpeedMultiplier > _maxMoveSpeedMultiplier)
+            if (MoveSpeedMultiplier > MaxMoveSpeedMultiplier)
             {
-                _moveSpeedMultiplier = _maxMoveSpeedMultiplier;
+                MoveSpeedMultiplier = MaxMoveSpeedMultiplier;
             }
             yield return null;
         }
