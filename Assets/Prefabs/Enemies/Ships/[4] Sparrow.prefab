@@ -587,6 +587,7 @@ MonoBehaviour:
   <CurrentHealth>k__BackingField: 0
   <CollisionDamage>k__BackingField: 1
   <XPosition>k__BackingField: 0
+  <MaxCount>k__BackingField: 3
 --- !u!50 &8411615334647027983
 Rigidbody2D:
   serializedVersion: 4

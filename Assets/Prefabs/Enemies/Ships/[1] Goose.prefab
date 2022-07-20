@@ -500,6 +500,7 @@ MonoBehaviour:
   <CurrentHealth>k__BackingField: 0
   <CollisionDamage>k__BackingField: 1
   <XPosition>k__BackingField: 0
+  <MaxCount>k__BackingField: 50
 --- !u!1 &5726690595828845800
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,7 +641,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slider: {fileID: 440123019533902511}
   _enemy: {fileID: -463979578444678899}
-  <RecoveryRate>k__BackingField: 0.5
+  <RecoveryRate>k__BackingField: 2
 --- !u!1 &6867060342846603334
 GameObject:
   m_ObjectHideFlags: 0

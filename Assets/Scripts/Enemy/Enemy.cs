@@ -19,6 +19,7 @@ namespace Enemy
         [field: SerializeField] public float CurrentHealth { get; protected set; }
         [field: SerializeField] public float CollisionDamage { get; protected set; } = 1f;
         [field: SerializeField] public int XPosition { get; protected set; }
+        [field: SerializeField] public int MaxCount { get; protected set; }
 
 
         private void Awake()
@@ -30,11 +31,6 @@ namespace Enemy
 
         private void OnEnable()
         {
-            Debug.Log("Противник включен OnEnable");
-            
-            HealthChanged?.Invoke(CurrentHealth / MaxHealth);
-            Debug.Log(CurrentHealth / MaxHealth);
-
             _mainWeapon.SetActiveBulletPool(_activeBulletPool);
             _activePool = transform.parent;
             XPosition = GetRandomXposition();

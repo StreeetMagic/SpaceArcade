@@ -16,16 +16,17 @@ namespace Enemy
 
         private List<List<Enemy>> _pools = new List<List<Enemy>>();
 
-        [field:Header("Spawn settings:")]
+        [field: Header("Spawn settings:")]
 
-        [field: SerializeField] public float SpawnCooldown { get; private set; } = 1f;
-        [field: SerializeField] public int PoolCapacity { get; private set; }
+        [field: SerializeField] public float CurrentSpawnCooldown { get; private set; }
+        [field: SerializeField] public float StartSpawnCooldown { get; private set; } = 1;
         [field: SerializeField] public int EnemiesAvaliable { get; private set; } = 1;
         [field: SerializeField] public int NewEnemyCooldown { get; private set; } = 30;
         public float ElapsedTime { get; private set; }
 
         private void Start()
         {
+            CurrentSpawnCooldown = StartSpawnCooldown;
             FillPools();
             Initialize();
             StartCoroutine(NewEnemiesTimer());
@@ -36,7 +37,7 @@ namespace Enemy
         {
             ElapsedTime += Time.deltaTime;
 
-            if (ElapsedTime >= SpawnCooldown)
+            if (ElapsedTime >= CurrentSpawnCooldown)
             {
                 if (TryGetObject(out Enemy enemy))
                 {
@@ -59,7 +60,7 @@ namespace Enemy
         {
             for (int i = 0; i < _enemies.Length; i++)
             {
-                for (int j = 0; j < PoolCapacity; j++)
+                for (int j = 0; j < _enemies[i].MaxCount; j++)
                 {
                     Enemy spawned = Instantiate(_enemies[i], _inactivePool.transform);
                     spawned.GetActiveBulletPool(_activeBulletPool);
@@ -73,11 +74,9 @@ namespace Enemy
         private bool TryGetObject(out Enemy result)
         {
             int randomEnemyPool = Random.Range(0, EnemiesAvaliable);
-            int randomEnemy = Random.Range(0, PoolCapacity);
+            int randomEnemy = Random.Range(0, _pools[randomEnemyPool].Count);
             result = _pools[randomEnemyPool][randomEnemy];
-
             return result.gameObject.activeSelf == false;
-
         }
 
         private void SetEnemy(Enemy enemy, Vector3 spawnPoint)
@@ -98,6 +97,11 @@ namespace Enemy
                 EnemiesAvaliable++;
                 yield return cooldown;
             }
+        }
+
+        public void SetStartSpawnCooldown(float value)
+        {
+            StartSpawnCooldown = value;
         }
     }
 }

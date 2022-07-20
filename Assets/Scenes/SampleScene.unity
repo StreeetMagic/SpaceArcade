@@ -498,7 +498,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2678f05ee09be2147bb4b8c00a202d2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPosition: {fileID: 0}
 --- !u!1 &465272692
 GameObject:
   m_ObjectHideFlags: 0
@@ -810,7 +809,7 @@ GameObject:
   m_Component:
   - component: {fileID: 642297796}
   m_Layer: 0
-  m_Name: MainBullets
+  m_Name: Bullets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1962,11 +1961,12 @@ MonoBehaviour:
   - {fileID: 2088717034}
   - {fileID: 19225905}
   _bullet: {fileID: 2635921795241442275, guid: 788aad14701c37444a82f4dce71f564d, type: 3}
-  _bulletsPerSecond: 1.5
-  _container: {fileID: 642297795}
-  _capacity: 200
+  _BulletContainer: {fileID: 642297795}
   _pool: []
   _activeBulletPool: {fileID: 126892722}
+  <Capacity>k__BackingField: 100
+  <BulletsPerSecond>k__BackingField: 1
+  <IsShooting>k__BackingField: 1
   _level: 0
 --- !u!4 &1668393856 stripped
 Transform:
@@ -2146,7 +2146,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1797105817}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.68, y: -0.04, z: -0.070871845}
+  m_LocalPosition: {x: 7.2, y: -0.04, z: -0.070871845}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 880204789}
@@ -2186,10 +2186,10 @@ MonoBehaviour:
   _activePool: {fileID: 327749142}
   _activeBulletPool: {fileID: 126892722}
   _statUpgrader: {fileID: 1797105820}
-  <SpawnCooldown>k__BackingField: 1
-  <PoolCapacity>k__BackingField: 3
+  <CurrentSpawnCooldown>k__BackingField: 1
+  <StartSpawnCooldown>k__BackingField: 1
   <EnemiesAvaliable>k__BackingField: 1
-  <NewEnemyCooldown>k__BackingField: 30
+  <NewEnemyCooldown>k__BackingField: 0
 --- !u!114 &1797105820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2202,11 +2202,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29a0f19cf15d4ce4da43214da341af79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultValue: 1
-  _moveSpeedMultiplier: 0
-  _maxMoveSpeedMultiplier: 2
-  _moveSpeedMultiplierDelta: 0.1
-  _moveSpeedCooldown: 30
+  <MoveSpeedDefaultValue>k__BackingField: 0.3
+  <MoveSpeedMultiplier>k__BackingField: 0
+  <MaxMoveSpeedMultiplier>k__BackingField: 2
+  <MoveSpeedMultiplierDelta>k__BackingField: 0.1
+  <MoveSpeedCooldown>k__BackingField: 5
 --- !u!1 &1828074454
 GameObject:
   m_ObjectHideFlags: 0

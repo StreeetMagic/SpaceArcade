@@ -572,6 +572,7 @@ MonoBehaviour:
   <CurrentHealth>k__BackingField: 0
   <CollisionDamage>k__BackingField: 1
   <XPosition>k__BackingField: 0
+  <MaxCount>k__BackingField: 30
 --- !u!1 &5513083810722220954
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,8 +21,8 @@ namespace Enemy
         {
             if (_statUpgrader)
             {
-                CurrentXMoveSpeed = DefaultXMoveSpeed * _statUpgrader.MoveSpeedMultiplier;
-                CurrentYMoveSpeed = DefaultYMoveSpeed * _statUpgrader.MoveSpeedMultiplier;
+                CurrentXMoveSpeed = DefaultXMoveSpeed * _statUpgrader.MoveSpeedCurrent;
+                CurrentYMoveSpeed = DefaultYMoveSpeed * _statUpgrader.MoveSpeedCurrent;
             }
         }
 
