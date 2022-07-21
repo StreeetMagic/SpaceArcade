@@ -108,11 +108,11 @@ MonoBehaviour:
   _barrels:
   - {fileID: 243591835}
   _bullet: {fileID: 3088936968990765573, guid: 37d278030c614b045aef3dbd6fe35248, type: 3}
-  _BulletContainer: {fileID: 450470933}
-  _pool: []
+  _BulletContainer: {fileID: 450470934}
   _activeBulletPool: {fileID: 0}
-  <Capacity>k__BackingField: 20
+  _pool: []
   <BulletsPerSecond>k__BackingField: 1
+  <Capacity>k__BackingField: 20
   <IsShooting>k__BackingField: 1
 --- !u!1 &2200964692971727079
 GameObject:

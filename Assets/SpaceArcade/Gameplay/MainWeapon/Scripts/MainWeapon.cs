@@ -6,15 +6,15 @@ public class MainWeapon : MonoBehaviour
 {
     [SerializeField] private Transform[] _barrels;
     [SerializeField] private Bullet _bullet;
-    [SerializeField] private GameObject _BulletContainer;
-    [SerializeField] private List<Bullet> _pool = new List<Bullet>();
+    [SerializeField] private Transform _BulletContainer;
     [SerializeField] private Transform _activeBulletPool;
+    [SerializeField] private List<Bullet> _pool = new List<Bullet>();
 
     private Coroutine _shooting;
 
-    [field: SerializeField] public int Capacity { get; private set; }
-    [field: SerializeField] public float BulletsPerSecond { get; private set; } = 1;
-    [field: SerializeField] public bool IsShooting { get; private set; } = true;
+    [field: SerializeField] protected float BulletsPerSecond { get; private set; } = 1;
+    [field: SerializeField] private int Capacity { get; set; }
+    [field: SerializeField] private bool IsShooting { get; set; } = true;
 
     private void OnEnable()
     {
@@ -26,7 +26,7 @@ public class MainWeapon : MonoBehaviour
     {
         for (int i = 0; i < Capacity; i++)
         {
-            Bullet spawned = Instantiate(_bullet, _BulletContainer.transform);
+            Bullet spawned = Instantiate(_bullet, _BulletContainer);
             spawned.gameObject.SetActive(false);
             _pool.Add(spawned);
         }

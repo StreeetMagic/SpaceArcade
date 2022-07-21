@@ -140,11 +140,11 @@ MonoBehaviour:
   - {fileID: 1326122039}
   - {fileID: 1158993659}
   _bullet: {fileID: 3088936968990765573, guid: 37d278030c614b045aef3dbd6fe35248, type: 3}
-  _BulletContainer: {fileID: 1740416600}
-  _pool: []
+  _BulletContainer: {fileID: 1740416601}
   _activeBulletPool: {fileID: 0}
-  <Capacity>k__BackingField: 20
+  _pool: []
   <BulletsPerSecond>k__BackingField: 1
+  <Capacity>k__BackingField: 20
   <IsShooting>k__BackingField: 1
 --- !u!1 &81162835955300439
 GameObject:
