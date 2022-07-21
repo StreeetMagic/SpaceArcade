@@ -6,29 +6,28 @@ public class MainWeapon : MonoBehaviour
 {
     [SerializeField] private Transform[] _barrels;
     [SerializeField] private Bullet _bullet;
-    [SerializeField] private float _bulletsPerSecond = 1;
-    [SerializeField] private GameObject _container;
-    [SerializeField] private int _capacity;
+    [SerializeField] private GameObject _BulletContainer;
     [SerializeField] private List<Bullet> _pool = new List<Bullet>();
     [SerializeField] private Transform _activeBulletPool;
 
-    private Coroutine _shooting;
-    private bool _isShooting = true;
 
-    protected float BulletsPerSecond => _bulletsPerSecond;
+    private Coroutine _shooting;
+
+    [field: SerializeField] public int Capacity { get; private set; }
+    [field: SerializeField] public float BulletsPerSecond { get; private set; } = 1;
+    [field: SerializeField] public bool IsShooting { get; private set; } = true;
 
     private void OnEnable()
     {
         Initialize();
-
         _shooting = StartCoroutine(Shooting());
     }
 
     private void Initialize()
     {
-        for (int i = 0; i < _capacity; i++)
+        for (int i = 0; i < Capacity; i++)
         {
-            Bullet spawned = Instantiate(_bullet, _container.transform);
+            Bullet spawned = Instantiate(_bullet, _BulletContainer.transform);
             spawned.gameObject.SetActive(false);
             _pool.Add(spawned);
         }
@@ -43,17 +42,17 @@ public class MainWeapon : MonoBehaviour
 
     private IEnumerator Shooting()
     {
-        float cooldown = 1 / _bulletsPerSecond;
+        float cooldown = 1 / BulletsPerSecond;
         bool isShooted;
 
-        WaitForSeconds waitForSeconds = new WaitForSeconds(cooldown);
-        yield return waitForSeconds;
+        WaitForSeconds reloading = new WaitForSeconds(cooldown);
+        yield return reloading;
 
-        while (_isShooting)
+        while (IsShooting)
         {
-            if (_container.transform.childCount <= _barrels.Length)
+            if (_BulletContainer.transform.childCount < _barrels.Length)
             {
-                yield return waitForSeconds;
+                yield return reloading;
             }
             else
             {
@@ -73,7 +72,7 @@ public class MainWeapon : MonoBehaviour
                         }
                     }
                 }
-                yield return waitForSeconds;
+                yield return reloading;
             }
         }
     }
@@ -91,13 +90,15 @@ public class MainWeapon : MonoBehaviour
 
     protected void SetFireRate(float fireRate)
     {
-        _bulletsPerSecond = fireRate;
+        BulletsPerSecond = fireRate;
 
         if (_shooting != null)
         {
             StopCoroutine(_shooting);
         }
         _shooting = StartCoroutine(Shooting());
+
+        Debug.Log(BulletsPerSecond);
     }
 
     public void SetActiveBulletPool(Transform pool)

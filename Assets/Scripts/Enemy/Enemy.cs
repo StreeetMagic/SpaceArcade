@@ -8,23 +8,24 @@ namespace Enemy
     {
         public event Action<float> HealthChanged;
 
-        [SerializeField] private float _maxHealth;
         [SerializeField] private MainWeapon _mainWeapon;
         [SerializeField] private Transform _activeBulletPool;
-
         [SerializeField] private Transform _inactivePool;
         [SerializeField] private Transform _activePool;
 
-        private float _currentHealth;
-        private float _collisionDamage = 1f;
+        protected Movement Movement;
 
-        public Movement Movement { get; private set; }
-        public int XPosition { get; protected set; }
+        [field: SerializeField] public float MaxHealth { get; protected set; }
+        [field: SerializeField] public float CurrentHealth { get; protected set; }
+        [field: SerializeField] public float CollisionDamage { get; protected set; } = 1f;
+        [field: SerializeField] public int XPosition { get; protected set; }
+        [field: SerializeField] public int MaxCount { get; protected set; }
+
 
         private void Awake()
         {
-            _currentHealth = _maxHealth;
             Movement = GetComponent<Movement>();
+            CurrentHealth = MaxHealth;
             _inactivePool = transform.parent;
         }
 
@@ -44,7 +45,7 @@ namespace Enemy
         {
             if (collision.TryGetComponent(out Player.Player player))
             {
-                player.TakeDamage(_collisionDamage);
+                player.TakeDamage(CollisionDamage);
                 Die();
             }
         }
@@ -54,9 +55,7 @@ namespace Enemy
             transform.SetParent(parent.transform);
             _activePool = parent.transform;
         }
-
-
-
+        
         private int GetRandomXposition()
         {
             int minX = 2;
@@ -71,18 +70,18 @@ namespace Enemy
 
         private void Die()
         {
-            _currentHealth = _maxHealth;
-            HealthChanged?.Invoke(_currentHealth / _maxHealth);
+
+            CurrentHealth = MaxHealth;
             _activePool.GetComponent<ActiveEnemyPool>().GetEnemyTransform(transform);
             gameObject.SetActive(false);
         }
 
         public void TakeDamage(float damage)
         {
-            _currentHealth -= damage;
-            HealthChanged?.Invoke(_currentHealth / _maxHealth);
+            CurrentHealth -= damage;
+            HealthChanged?.Invoke(CurrentHealth / MaxHealth);
 
-            if (_currentHealth <= 0)
+            if (CurrentHealth <= 0)
             {
                 Die();
             }

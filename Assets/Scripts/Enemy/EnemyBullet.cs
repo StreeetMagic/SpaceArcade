@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Enemy
 {
     public class EnemyBullet : Bullet
     {
+        [SerializeField] private Movement _movement;
+        
         private void Update()
         {
             transform.Translate(Vector3.up * Speed * Time.deltaTime);
@@ -23,10 +23,7 @@ namespace Enemy
                 player.TakeDamage(Damage);
                 gameObject.SetActive(false);
             }
-
         }
-
-
     }
 }
 

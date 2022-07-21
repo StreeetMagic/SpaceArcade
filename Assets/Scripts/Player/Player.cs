@@ -63,6 +63,11 @@ namespace Player
                 Health++;
                 HealthChanged?.Invoke(Health);
             }
+            else
+            {
+                Armor++;
+                ArmorChanged?.Invoke(Armor);
+            }
         }
 
         private void Die()

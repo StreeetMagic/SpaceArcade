@@ -1,21 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-using Enemy;
-
 
 public abstract class Bullet : MonoBehaviour
 {
     private GameObject _parent;
 
-    [field:SerializeField] public float Speed { get; protected set; } = 15;
+    [field: SerializeField] public float Speed { get; protected set; } = 15;
     [field: SerializeField] public int Damage { get; protected set; } = 1;
 
     private void Awake()
     {
         _parent = transform.parent.gameObject;
     }
-
 
     private void OnDisable()
     {
@@ -26,7 +22,4 @@ public abstract class Bullet : MonoBehaviour
     {
         transform.SetParent(_parent.transform);
     }
-
 }
-
-

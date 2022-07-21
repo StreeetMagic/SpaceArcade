@@ -1,95 +1,99 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Enemy
 {
     public class Movement : MonoBehaviour
     {
-        [SerializeField] private float _DefaultXMoveSpeed = 3;
-        [SerializeField] private float _DefaultYMoveSpeed = 2;
+        private StatUpgrader _statUpgrader;
 
-        private float _xMoveSpeed;
-        private float _yMoveSpeed;
+        [field: SerializeField] public float DefaultXMoveSpeed { get; private set; } = 3;
+        [field: SerializeField] public float DefaultYMoveSpeed { get; private set; } = 2;
+        [field: SerializeField] public float CurrentXMoveSpeed { get; private set; }
+        [field: SerializeField] public float CurrentYMoveSpeed { get; private set; }
 
-        private bool _goesTop = true;
-        private bool _goesLeft = true;
-        private int _YBorder = 4;
-        private int _XBorder = 7;
+        public int YBorder { get; private set; } = 4;
+        public int XBorder { get; private set; } = 6;
+        public bool GoesTop { get; private set; } = true;
+        public bool GoesLeft { get; private set; } = true;
 
-        public float XMoveSpeed => _xMoveSpeed;
 
         private void OnEnable()
         {
-             _xMoveSpeed = _DefaultXMoveSpeed * DiffucultySingleton.Instance.MoveSpeedMultiplier;
-             _yMoveSpeed = _DefaultYMoveSpeed * DiffucultySingleton.Instance.MoveSpeedMultiplier;
+            if (_statUpgrader)
+            {
+                CurrentXMoveSpeed = DefaultXMoveSpeed * _statUpgrader.MoveSpeedCurrent;
+                CurrentYMoveSpeed = DefaultYMoveSpeed * _statUpgrader.MoveSpeedCurrent;
+            }
         }
 
         public void MoveLeft()
         {
-            transform.position -= new Vector3(_xMoveSpeed * Time.deltaTime, 0, 0);
+            transform.position -= new Vector3(CurrentXMoveSpeed * Time.deltaTime, 0, 0);
         }
 
         public void MoveRight()
         {
-            transform.position += new Vector3(_xMoveSpeed * Time.deltaTime, 0, 0);
+            transform.position += new Vector3(CurrentXMoveSpeed * Time.deltaTime, 0, 0);
         }
 
         public void MoveDown()
         {
-            transform.position -= new Vector3(0, _yMoveSpeed * Time.deltaTime, 0);
+            transform.position -= new Vector3(0, CurrentYMoveSpeed * Time.deltaTime, 0);
         }
 
         public void MoveTop()
         {
-            transform.position += new Vector3(0, _yMoveSpeed * Time.deltaTime, 0);
+            transform.position += new Vector3(0, CurrentYMoveSpeed * Time.deltaTime, 0);
         }
 
         public void StrafeY()
         {
-            if (_goesTop)
+            if (GoesTop)
             {
                 MoveTop();
 
-                if (transform.position.y >= _YBorder)
+                if (transform.position.y >= YBorder)
                 {
-                    _goesTop = false;
+                    GoesTop = false;
                 }
             }
             else
             {
                 MoveDown();
 
-                if (transform.position.y <= -_YBorder)
+                if (transform.position.y <= -YBorder)
                 {
-                    _goesTop = true;
+                    GoesTop = true;
                 }
             }
         }
 
         public void StrafeX()
         {
-            if (_goesLeft)
+            if (GoesLeft)
             {
                 MoveLeft();
 
-                if (transform.position.x <= -_XBorder)
+                if (transform.position.x <= -XBorder)
                 {
-                    _goesLeft = false;
+                    GoesLeft = false;
                 }
             }
             else
             {
                 MoveRight();
 
-                if (transform.position.x >= _XBorder)
+                if (transform.position.x >= XBorder)
                 {
-                    _goesLeft = true;
+                    GoesLeft = true;
                 }
             }
         }
 
-
+        public void GetStatUpgrader(StatUpgrader statUpgrader)
+        {
+            _statUpgrader = statUpgrader;
+        }
     }
 }
 
