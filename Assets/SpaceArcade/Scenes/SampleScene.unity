@@ -1947,7 +1947,7 @@ Transform:
   m_Children:
   - {fileID: 1552515440}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!114 &1451979467
 MonoBehaviour:
@@ -1975,8 +1975,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainWeapon: {fileID: 1552515441}
-  <StartingHealth>k__BackingField: 5
-  <StartingArmor>k__BackingField: 10
+  <StartingHealth>k__BackingField: 1
+  <StartingArmor>k__BackingField: 1
   <Health>k__BackingField: 0
   <Armor>k__BackingField: 0
 --- !u!61 &1451979471
@@ -2306,7 +2306,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1797105817}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.2, y: -0.04, z: -0.070871845}
+  m_LocalPosition: {x: 10, y: -0.04, z: -0.070871845}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 880204789}
@@ -2316,7 +2316,7 @@ Transform:
   - {fileID: 586585602}
   - {fileID: 1856118561}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1797105819
 MonoBehaviour:
@@ -2344,7 +2344,7 @@ MonoBehaviour:
   - {fileID: 586585602}
   _inactivePool: {fileID: 1856118560}
   _activePool: {fileID: 327749142}
-  _activeBulletPool: {fileID: 126892722}
+  _activeBulletPool: {fileID: 4221489}
   _statUpgrader: {fileID: 1797105820}
   <DefaultSpawnCooldown>k__BackingField: 1
   <EnemiesAvaliable>k__BackingField: 1

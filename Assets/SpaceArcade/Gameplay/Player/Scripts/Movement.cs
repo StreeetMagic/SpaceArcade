@@ -26,7 +26,7 @@ namespace Player
 
         private void Update()
         {
-            _direction = _playerUinputActions.Player.Move.ReadValue<Vector2>();
+            OnMove();
             Move(_direction);
         }
 
