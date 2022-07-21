@@ -2121,11 +2121,11 @@ MonoBehaviour:
   - {fileID: 2088717034}
   - {fileID: 19225905}
   _bullet: {fileID: 2635921795241442275, guid: 788aad14701c37444a82f4dce71f564d, type: 3}
-  _BulletContainer: {fileID: 642297795}
-  _pool: []
+  _BulletContainer: {fileID: 642297796}
   _activeBulletPool: {fileID: 126892722}
-  <Capacity>k__BackingField: 100
+  _pool: []
   <BulletsPerSecond>k__BackingField: 0.5
+  <Capacity>k__BackingField: 100
   <IsShooting>k__BackingField: 1
   _level: 0
 --- !u!4 &1668393856 stripped
